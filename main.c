@@ -18,12 +18,12 @@ Nodo * insertarNodo();
 
 int main(int argc, char *argv[]) {
     generarArchivo();
-    if (argc != 2 ) {
-        fprintf (stderr, "Ejecutar: %s <data.txt>", argv[0]);
-        exit (EXIT_FAILURE);
+    if (argc!=2){
+        fprintf(stderr,"ejecutar: %s <name.txt>", argv[0]);
+        exit(EXIT_FAILURE);
     }
-    FILE* filelist = fopen(argv[1],"r");
-    operacionesArchivo(filelist);
+    FILE* fileList=fopen(argv[1],"r");
+    operacionesArchivo(fileList);
     return 0;
 }
 
@@ -33,9 +33,9 @@ void generarArchivo(){
     char buffer [50];
     FILE *fp;
     fp = fopen ("data.txt", "w");
-    for(int i = 0; i<=15000; i++){
-        num = rand();
-        if ((num>=0)&&(num<=1000000)){
+    for(int i = 0; i<=150000; i++){
+        num = rand() % 1000001;
+        if (((num>=0)&&(num<=1000000))){
             cont++;
             snprintf(buffer,50,"%d",num);
             fprintf(fp,"%s,", buffer);
@@ -48,7 +48,7 @@ void generarArchivo(){
 }
 
 void operacionesArchivo(FILE* fp){
-    printf("wordks");
+
 }
 
 Nodo * insertarNodo(int A){
