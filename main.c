@@ -48,7 +48,7 @@ void generarArchivo(){
 }
 
 void operacionesArchivo(FILE* fp){
-
+    printf("wordks");
 }
 
 Nodo * insertarNodo(int A){
