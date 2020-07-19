@@ -1,13 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "mySortAlg.h"
 #define MAXCHAR 1000
-
-typedef struct nd {
-    int number;
-    struct nd *previous;
-    struct nd *next;
-}Nodo;
 
 Nodo *primero=NULL;
 Nodo *ultimo=NULL;
@@ -15,6 +10,8 @@ Nodo *ultimo=NULL;
 void generarArchivo();
 void operacionesArchivo();
 Nodo * insertarNodo();
+
+//void desplegarListaPU();
 
 int main(int argc, char *argv[]) {
     generarArchivo();
@@ -40,7 +37,7 @@ void generarArchivo(){
             snprintf(buffer,50,"%d",num);
             fprintf(fp,"%s,", buffer);
         }
-        if (cont==150){
+        if (cont==149){
             fclose(fp);
             break;
         }
@@ -48,7 +45,20 @@ void generarArchivo(){
 }
 
 void operacionesArchivo(FILE* fp){
-
+    char str[MAXCHAR];
+    int num;
+    if(fp==NULL){
+        printf("no se encontro el archivo %s",fp);
+    }
+    while(fgets(str,MAXCHAR,(FILE*)fp) !=NULL){
+        char *token;
+        token=strtok(str,",");
+        while(token != NULL){
+            num = atoi(token);
+            insertarNodo(num);
+            token = strtok(NULL,",");
+        }
+    }
 }
 
 Nodo * insertarNodo(int A){
@@ -67,3 +77,16 @@ Nodo * insertarNodo(int A){
     }
     return nuevo;
 }
+
+/*void desplegarListaPU(){
+    Nodo* actual= (Nodo*)malloc(sizeof(Nodo));
+    actual=primero;
+    if(primero!=NULL){
+        while (actual!=NULL){
+            printf("\n %d",actual->number);
+            actual= actual->next;
+        }
+    } else{
+        printf("\n la lista se encuentra vacia\n");
+    }
+}*/
