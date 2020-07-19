@@ -11,6 +11,9 @@ typedef struct nd {
     struct nd *next;
 }Nodo;
 
-int functionN();
+Nodo* getNode(int data);
+void sortedInsert(Nodo* head_ref, Nodo* newNode);
+void insertionSort(Nodo* head_ref);
+void printList(Nodo* head);
 
 #endif //TAREATAREA2_MYSORTALG_H

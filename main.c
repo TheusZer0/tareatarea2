@@ -11,7 +11,9 @@ void generarArchivo();
 void operacionesArchivo();
 Nodo * insertarNodo();
 
-//void desplegarListaPU();
+static int cantidadNodos=0;
+
+void desplegarListaPU();
 
 int main(int argc, char *argv[]) {
     generarArchivo();
@@ -54,11 +56,13 @@ void operacionesArchivo(FILE* fp){
         char *token;
         token=strtok(str,",");
         while(token != NULL){
-            num = atoi(token);
+            num = atoi(token);//cambiar tiene errores creo 409 y 125
             insertarNodo(num);
             token = strtok(NULL,",");
         }
     }
+    insertionSort(primero);
+    printList(primero);
 }
 
 Nodo * insertarNodo(int A){
@@ -75,18 +79,19 @@ Nodo * insertarNodo(int A){
         nuevo->previous=ultimo;
         ultimo = nuevo;
     }
+    cantidadNodos++;
     return nuevo;
 }
 
-/*void desplegarListaPU(){
+void desplegarListaPU(){
     Nodo* actual= (Nodo*)malloc(sizeof(Nodo));
     actual=primero;
     if(primero!=NULL){
         while (actual!=NULL){
-            printf("\n %d",actual->number);
+            printf("%d\n",actual->number);
             actual= actual->next;
         }
     } else{
         printf("\n la lista se encuentra vacia\n");
     }
-}*/
+}
