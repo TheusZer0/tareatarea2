@@ -36,9 +36,6 @@ void generarArchivo(){
     for(int i = 0; i<=15000; i++){
         num = rand();
         if ((num>=0)&&(num<=1000000)){
-            if (num>100000){
-                printf("%d",num);
-            }
             cont++;
             snprintf(buffer,50,"%d",num);
             fprintf(fp,"%s,", buffer);
