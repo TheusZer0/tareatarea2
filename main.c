@@ -7,22 +7,24 @@
 Nodo *primero=NULL;
 Nodo *ultimo=NULL;
 
-void generarArchivo();
-void operacionesArchivo();
-Nodo * insertarNodo();
+void generarArchivo(); //genera el archivo data.txt con numeros
+void operacionesArchivo(FILE* fp); //recibe el archivo data.txt y opera sobre el
+Nodo * insertarNodo(int A);
+Nodo* sortedInsert(Nodo* head_ref, Nodo* newNode);
+void printList(Nodo* head);
 
 static int cantidadNodos=0;
 
-void desplegarListaPU();
-
-int main(int argc, char *argv[]) {
+int main(/*int argc, char *argv[]*/) {
     generarArchivo();
-    if (argc!=2){
-        fprintf(stderr,"ejecutar: %s <name.txt>", argv[0]);
+    /*if (argc!=2){
+        fprintf(stderr,"ejecutar: %s data.txt", argv[0]);
         exit(EXIT_FAILURE);
-    }
-    FILE* fileList=fopen(argv[1],"r");
+    }*/
+    FILE* fileList=fopen("data.txt","r");
     operacionesArchivo(fileList);
+    insertionSort(primero);
+    printList(primero);
     return 0;
 }
 
@@ -45,7 +47,6 @@ void generarArchivo(){
         }
     }
 }
-
 void operacionesArchivo(FILE* fp){
     char str[MAXCHAR];
     int num;
@@ -61,10 +62,7 @@ void operacionesArchivo(FILE* fp){
             token = strtok(NULL,",");
         }
     }
-    insertionSort(primero);
-    printList(primero);
 }
-
 Nodo * insertarNodo(int A){
     Nodo* nuevo = (Nodo*)malloc(sizeof(Nodo)); //se crea un nodo nuevo
     nuevo->number=A; //se copia la informacion de number nuevo->notas
@@ -82,16 +80,9 @@ Nodo * insertarNodo(int A){
     cantidadNodos++;
     return nuevo;
 }
-
-void desplegarListaPU(){
-    Nodo* actual= (Nodo*)malloc(sizeof(Nodo));
-    actual=primero;
-    if(primero!=NULL){
-        while (actual!=NULL){
-            printf("%d\n",actual->number);
-            actual= actual->next;
-        }
-    } else{
-        printf("\n la lista se encuentra vacia\n");
+void printList(Nodo* head){
+    while (head !=NULL){
+        printf("%d\n",head->number);
+        head = head->next;
     }
 }
