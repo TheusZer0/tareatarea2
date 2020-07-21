@@ -19,4 +19,5 @@ int countNodos(Nodo* head);
 int leftChild(int pNodo);
 int rightChild(int pNodo);
 int parent(int pNodo);
+void maxHeapify(Nodo* head, int posicion);
 #endif //TAREATAREA2_MYSORTALG_H

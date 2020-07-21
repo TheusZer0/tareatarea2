@@ -26,6 +26,7 @@ int main(/*int argc, char *argv[]*/) {
 //    printList(primero);
     return 0;
 }
+
 void generarArchivo(){
     int num=0;
     int cont=0;

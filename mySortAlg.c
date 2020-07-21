@@ -83,3 +83,10 @@ int parent(int pNodo){
     return nodoPadre;
 }
 
+void maxHeapify(Nodo* head, int posicion){
+    int l = leftChild(posicion);
+    int r = rightChild(posicion);
+    while (head!=NULL){
+        head= head->next;
+    }
+}
