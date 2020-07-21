@@ -44,4 +44,42 @@ Nodo* insertionSort(Nodo* head_ref){
     return head_ref;
 }
 
+//heapsort
+
+int countNodos(Nodo* head){
+    int numNodos = 0;
+    while (head !=NULL){
+        numNodos++;
+        head = head->next;
+    }
+    return numNodos;
+} // cuenta la cantidad de nodos del sistema
+int posicionNodo(Nodo* Lista, Nodo* pNodo){
+    //Lista = primer nodo de la lista y pNodo = nodo elejido
+    Nodo* indice = NULL;
+    //cuenta la cantidad de nodos
+    int posicion=0;
+    indice=Lista;
+    while (indice !=NULL){
+        indice=indice->next;
+        if(indice->number == pNodo->number){
+            return posicion;
+        } else{
+            posicion++;
+        }
+    }
+}
+int leftChild(int pNodo){
+    int tmp = 2*pNodo;
+    return tmp;
+}
+int rightChild(int pNodo){
+    int tmp = ((2*pNodo)+1);
+    return tmp;
+}
+int parent(int pNodo){
+    int nodoPadre=0;
+    nodoPadre=(pNodo/2);
+    return nodoPadre;
+}
 

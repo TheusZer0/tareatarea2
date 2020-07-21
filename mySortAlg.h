@@ -14,4 +14,9 @@ typedef struct nd {
 Nodo* sortedInsert(Nodo* head_ref, Nodo* newNode);
 Nodo* insertionSort(Nodo* head_ref);
 
+int posicionNodo(Nodo* head_ref, Nodo* elect);
+int countNodos(Nodo* head);
+int leftChild(int pNodo);
+int rightChild(int pNodo);
+int parent(int pNodo);
 #endif //TAREATAREA2_MYSORTALG_H

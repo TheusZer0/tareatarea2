@@ -4,8 +4,9 @@
 #include "mySortAlg.h"
 #define MAXCHAR 1000
 
-Nodo *primero=NULL;
-Nodo *ultimo=NULL;
+Nodo *primero=NULL; //se define un nodo global que representara el primer nodo de la lista
+Nodo *ultimo=NULL; //se define un nodo global que representara el ultimo nodo de la lista
+static int cantidadNodos=0; //variable global estatica que contarta
 
 void generarArchivo(); //genera el archivo data.txt con numeros
 void operacionesArchivo(FILE* fp); //recibe el archivo data.txt y opera sobre el
@@ -13,21 +14,18 @@ Nodo * insertarNodo(int A);
 Nodo* sortedInsert(Nodo* head_ref, Nodo* newNode);
 void printList(Nodo* head);
 
-static int cantidadNodos=0;
-
 int main(/*int argc, char *argv[]*/) {
     generarArchivo();
     /*if (argc!=2){
         fprintf(stderr,"ejecutar: %s data.txt", argv[0]);
         exit(EXIT_FAILURE);
     }*/
-    FILE* fileList=fopen("data.txt","r");
+    FILE* fileList=fopen("data.txt"/*argc[1]*/,"r");
     operacionesArchivo(fileList);
-    insertionSort(primero);
-    printList(primero);
+//    insertionSort(primero);
+//    printList(primero);
     return 0;
 }
-
 void generarArchivo(){
     int num=0;
     int cont=0;
@@ -41,7 +39,7 @@ void generarArchivo(){
             snprintf(buffer,50,"%d",num);
             fprintf(fp,"%s,", buffer);
         }
-        if (cont==149){
+        if (cont==150){
             fclose(fp);
             break;
         }
