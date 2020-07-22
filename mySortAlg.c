@@ -1,6 +1,7 @@
 //
 // Created by theuszero on 18-07-20.
 //
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -101,12 +102,15 @@ Nodo* returnNodo(Nodo* head, int pNodo){
     int tmp=0;
     Nodo* indice=NULL;
     indice=head;
+    if (pNodo==1){
+        return indice;
+    }
     while (indice !=NULL){
-        indice= indice->next;
         tmp++;
         if (tmp==pNodo){
             return indice;
         }
+        indice= indice->next;
     }
 }
 
@@ -132,4 +136,7 @@ void maxHeapify(Nodo* head, int posicion){
             maxHeapify(tmp,largest);
         }
     }
+}
+
+void buildMaxHeap(Nodo* head){
 }

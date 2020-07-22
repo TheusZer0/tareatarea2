@@ -23,7 +23,8 @@ int main(/*int argc, char *argv[]*/) {
     FILE* fileList=fopen("data.txt"/*argc[1]*/,"r");
     operacionesArchivo(fileList);
 //    insertionSort(primero);
-//    printList(primero);
+    maxHeapify(primero,2);
+    printList(primero);
     return 0;
 }
 
