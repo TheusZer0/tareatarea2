@@ -32,7 +32,6 @@ Nodo * sortedInsert(Nodo* head_ref, Nodo* newNode){
     }
     return head_ref;
 }
-
 Nodo* insertionSort(Nodo* head_ref){
     Nodo* sorted = NULL;
     Nodo* current = head_ref;
@@ -47,7 +46,6 @@ Nodo* insertionSort(Nodo* head_ref){
     head_ref = sorted;
     return head_ref;
 }
-
 //heapSort
 int countNodos(Nodo* head){
     int numNodos = 0;
@@ -113,7 +111,6 @@ void maxHeapify(Nodo* head, int posicion){
     int cantNodos=0;
     cantNodos=countNodos(head);
     int largest;
-    head= head->next;
     if ((l<=cantNodos)&&((returnNodo(head, l)->number) > (returnNodo(head, posicion))->number)){
         largest = l;
     } else{
@@ -123,9 +120,10 @@ void maxHeapify(Nodo* head, int posicion){
         largest=r;
     }
     if (largest!=posicion){
-        swap(returnNodo(head, posicion), (returnNodo(head, largest)));
+        swap((returnNodo(head, posicion)), (returnNodo(head, largest)));
         maxHeapify(head, largest);
     }
 }
 void buildMaxHeap(Nodo* head){
+
 }
