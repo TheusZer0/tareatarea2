@@ -8,7 +8,6 @@
 #include "mySortAlg.h"
 
 // insertionSort
-
 Nodo * sortedInsert(Nodo* head_ref, Nodo* newNode){
     //recibe como parametro el nodo head_ref que es el head de la lista y el newNode para el insertSort
     Nodo* current; //se crea un nodo current, correspondiente a un nodo tmp
