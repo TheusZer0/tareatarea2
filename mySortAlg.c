@@ -49,7 +49,6 @@ Nodo* insertionSort(Nodo* head_ref){
 }
 
 //heapSort
-
 int countNodos(Nodo* head){
     int numNodos = 0;
     while (head !=NULL){
@@ -58,7 +57,6 @@ int countNodos(Nodo* head){
     }
     return numNodos;
 } // cuenta la cantidad de nodos del sistema
-
 int posicionNodo(Nodo* Lista, Nodo* pNodo){
     //Lista = primer nodo de la lista y pNodo = nodo elejido
     Nodo* indice = NULL;
@@ -74,37 +72,33 @@ int posicionNodo(Nodo* Lista, Nodo* pNodo){
         }
     }
 }
-
 int leftChild(int pNodo){
     int tmp = 2*pNodo;
     return tmp;
 }
-
 int rightChild(int pNodo){
     int tmp = ((2*pNodo)+1);
     return tmp;
 }
-
 int parent(int pNodo){
     int nodoPadre=0;
     nodoPadre=(pNodo/2);
     return nodoPadre;
 }
-
-void swap(int *xp, int *yp)
+void swap(Nodo* one, Nodo* two)
 {
-    int temp = *xp;
-    *xp = *yp;
-    *yp = temp;
+    int temp = one->number;
+    (one->number)=(two->number);
+    (two->number)=(temp);
 }
-
 Nodo* returnNodo(Nodo* head, int pNodo){
     int tmp=0;
     Nodo* indice=NULL;
     indice=head;
-    if (pNodo==1){
-        return indice;
-    }
+    int cantNodo=countNodos(head);
+    if (pNodo>cantNodo){
+        return head;
+    };
     while (indice !=NULL){
         tmp++;
         if (tmp==pNodo){
@@ -113,30 +107,25 @@ Nodo* returnNodo(Nodo* head, int pNodo){
         indice= indice->next;
     }
 }
-
 void maxHeapify(Nodo* head, int posicion){
     int l = leftChild(posicion);
     int r = rightChild(posicion);
-    Nodo* tmp =NULL;
-    tmp = head;
+    int cantNodos=0;
+    cantNodos=countNodos(head);
     int largest;
-    while (tmp!=NULL){
-        tmp= tmp->next;
-        if ((l<=(countNodos(tmp)))&&((returnNodo(tmp,l)->number)>(returnNodo(tmp,posicion))->number)){
-            largest = l;
-        } else{
-            largest=posicion;
-        }
-        if ((r>=(countNodos(tmp)))&&((returnNodo(tmp,r)->number)>(returnNodo(tmp,largest)->number))){
-            largest=r;
-        }
-        if (largest!=posicion){
-            //swap
-            swap(&(returnNodo(tmp, posicion))->number, &(returnNodo(tmp,largest))->number);
-            maxHeapify(tmp,largest);
-        }
+    head= head->next;
+    if ((l<=cantNodos)&&((returnNodo(head, l)->number) > (returnNodo(head, posicion))->number)){
+        largest = l;
+    } else{
+        largest=posicion;
+    }
+    if ((r<=(countNodos(head))) && ((returnNodo(head, r)->number) > (returnNodo(head, largest)->number))){
+        largest=r;
+    }
+    if (largest!=posicion){
+        swap(returnNodo(head, posicion), (returnNodo(head, largest)));
+        maxHeapify(head, largest);
     }
 }
-
 void buildMaxHeap(Nodo* head){
 }
