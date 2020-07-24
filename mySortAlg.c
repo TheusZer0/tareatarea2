@@ -82,11 +82,12 @@ int parent(int pNodo){
     nodoPadre=(pNodo/2);
     return nodoPadre;
 }
-void swap(Nodo* one, Nodo* two)
+void swap(Nodo** one, Nodo** two)
 {
-    int temp = one->number;
-    (one->number)=(two->number);
-    (two->number)=(temp);
+    Nodo* temp=NULL;
+    temp=*one;
+    one=two;
+    *two=temp;
 }
 Nodo* returnNodo(Nodo* head, int pNodo){
     int tmp=0;
@@ -119,7 +120,7 @@ void maxHeapify(Nodo* head, int posicion){
         largest=r;
     }
     if (largest!=posicion){
-        swap((returnNodo(head, posicion)), (returnNodo(head, largest)));
+        swap((Nodo **) (returnNodo(head, posicion)), (Nodo **) (returnNodo(head, largest)));
         maxHeapify(head, largest);
     }
 }

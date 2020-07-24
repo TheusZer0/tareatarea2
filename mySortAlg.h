@@ -76,7 +76,7 @@ void maxHeapify(Nodo* head, int posicion);
  */
 Nodo* returnNodo(Nodo* head, int pNodo);
 
-void swap(Nodo* one, Nodo* two);
+void swap(Nodo** one, Nodo** two);
 
 void buildMaxHeap(Nodo* head);
 
