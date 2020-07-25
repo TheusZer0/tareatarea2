@@ -82,12 +82,43 @@ int parent(int pNodo){
     nodoPadre=(pNodo/2);
     return nodoPadre;
 }
-void swap(Nodo** one, Nodo** two)
-{
-    Nodo* temp=NULL;
-    temp=*one;
-    one=two;
-    *two=temp;
+void swap(Nodo* a, Nodo* b) {
+    if (a == b)
+        return;
+
+    if (a->next == b) { // right next to each other
+        a->next = b->next;
+        b->previous = a->previous;
+
+        if (a->next != NULL)
+            a->next->previous = a;
+
+        if (b->previous != NULL)
+            b->previous->next = b;
+
+
+        b->next = a;
+        a->previous = b;
+    } else {
+        Nodo* p = b->previous;
+        Nodo* n = b->next;
+
+        b->previous = a->previous;
+        b->next = a->next;
+
+        a->previous = p;
+        a->next = n;
+
+        if (b->next != NULL)
+            b->next->previous = b;
+        if (b->previous != NULL)
+            b->previous->next = b;
+
+        if (a->next != NULL)
+            a->next->previous = a;
+        if (a->previous != NULL)
+            a->previous->next = a;
+    }
 }
 Nodo* returnNodo(Nodo* head, int pNodo){
     int tmp=0;
@@ -120,7 +151,7 @@ void maxHeapify(Nodo* head, int posicion){
         largest=r;
     }
     if (largest!=posicion){
-        swap((Nodo **) (returnNodo(head, posicion)), (Nodo **) (returnNodo(head, largest)));
+        swap((returnNodo(head, posicion)),(returnNodo(head, largest)));
         maxHeapify(head, largest);
     }
 }
