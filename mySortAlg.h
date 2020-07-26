@@ -5,6 +5,7 @@
 #ifndef TAREATAREA2_MYSORTALG_H
 #define TAREATAREA2_MYSORTALG_H
 
+// estructura de los nodos de la listas
 typedef struct nd {
     int number;
     struct nd *previous;
@@ -85,8 +86,19 @@ void maxHeapify(Nodo* head, int posicion);
  */
 Nodo* returnNodo(Nodo* head, int pNodo);
 
+/**
+ * @brief        : realiza un swap entre nodos, es decir, cambia la posicion de 2 nodos.
+ * @param one: Nodo a que sera intercambiado con un nodo b, es decir, seran intercambiados de posicion en la lista enlazada
+ * @param two: Nodo b que sera intercambiado con un nodo a, es decir, seran intercambiados de posicion en la lista enlazada
+ * @return       : no retorna ningun nodo
+ */
 void swap(Nodo* one, Nodo* two);
 
+/**
+ * @brief      : funcion que realiza un max_heap, es decir, mantiene la propiedad base de un max-heap
+ * @param head : recibe el nodo head de la lista doblemente enlazada
+ * @return     : no retorna nada
+ */
 void buildMaxHeap(Nodo* head);
 
 #endif //TAREATAREA2_MYSORTALG_H
