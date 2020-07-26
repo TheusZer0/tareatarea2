@@ -12,7 +12,6 @@ typedef struct nd {
     struct nd *next;
 }Nodo;
 
-
 /**
  * Links usados:
  * https://www.geeksforgeeks.org/create-doubly-linked-list-using-double-pointer-inserting-nodes-list-remains-ascending-order/ //InsertionSort
