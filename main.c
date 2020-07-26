@@ -60,56 +60,61 @@ void generarArchivo(){
     int cont=0;
     char buffer [50];
     FILE *fp;
-    fp = fopen ("data.txt", "w");
+    fp = fopen ("data.txt", "w"); //se abre el archivo
     for(int i = 0; i<=150000; i++){
-        num = rand() % 1000001;
-        if (((num>=0)&&(num<=1000000))){
+        num = rand() % 1000001; //numeros random hasta el millon
+        if (((num>=0)&&(num<=1000000))){ //numeros entre el 0 y el millon
             cont++;
             snprintf(buffer,50,"%d",num);
+            //se escribe en un archivo
             fprintf(fp,"%s,", buffer);
         }
         if (cont==150){
-            fclose(fp);
+            fclose(fp); //se cierra el archivo
             break;
         }
     }
 }
+
 void operacionesArchivo(FILE* fp){
     char str[MAXCHAR];
     int num;
-    if(fp==NULL){
+    if(fp==NULL){ //si el archivo en NULL entonces entrega el mensaje
         printf("no se encontro el archivo %s",fp);
     }
     while(fgets(str,MAXCHAR,(FILE*)fp) !=NULL){
         char *token;
         token=strtok(str,",");
         while(token != NULL){
-            num = atoi(token);//cambiar tiene errores creo 409 y 125
-            insertarNodo(num);
+            num = atoi(token); //la funcion atoi convierte el char en entero
+            insertarNodo(num); //se inserta el num en la lista doblemente enlazada
             token = strtok(NULL,",");
         }
     }
 }
+
 Nodo * insertarNodo(int A){
     Nodo* nuevo = (Nodo*)malloc(sizeof(Nodo)); //se crea un nodo nuevo
     nuevo->number=A; //se copia la informacion de number nuevo->notas
+    //si el primero es null, quiere decir que aun no tiene nada, por lo tanto se le ingresa data
     if (primero==NULL){
         primero = nuevo; //primero es igual al nodo nuevo
-        primero->next=NULL;
-        primero->previous=NULL;
+        primero->next=NULL; //next en null debido a que el nodo ingresado es el head
+        primero->previous=NULL; //el previus en null debido a que el nodo que ingresamos corresponde al head
         ultimo=primero; //el ultimo es el primero que ingresa
-    } else{
-        ultimo->next = nuevo;
-        nuevo->next=NULL;
-        nuevo->previous=ultimo;
-        ultimo = nuevo;
+    } else{ //este caso sucede cuando ya hay un nodo ingresado, es decir, cuando primero!=NULL
+        ultimo->next = nuevo; //el ultimo apunta a next y este es igual a nuevo, nodo que creamos dentro de esta funcion
+        nuevo->next=NULL; //el next de nuevo corresponde a null ya que no hay ningun nodo adelante de el
+        nuevo->previous=ultimo; //dejamos a previus como el nodo ultimo
+        ultimo = nuevo; //igualamos el ultimo a nuevo
     }
-    cantidadNodos++;
-    return nuevo;
+    cantidadNodos++; //sumamos la cantidad de nodos
+    return nuevo; //retorna el nodo nuevo
 }
+
 void printList(Nodo* head){
-    while (head !=NULL){
-        printf("%d\n",head->number);
-        head = head->next;
+    while (head !=NULL){ //si el head tiene contenido entonces se recorre la lista enlazada
+        printf("%d\n",head->number);//printa el number en el head
+        head = head->next; //head apunta al siguiente
     }
 }
