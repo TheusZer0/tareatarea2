@@ -52,14 +52,14 @@ int countNodos(Nodo* head);
 /**
  * @brief        : entrega el nodo hijo izquierdo de un nodo padre
  * @param pNodo: la posicion del nodo dentro de la lista
- * @return       :
+ * @return       : retorna un entero que corresponde al indice de la posicion del nodo izquiero (posicion entera del nodo)
  */
 int leftChild(int pNodo);
 
 /**
- * @brief        :
- * @param headRef:
- * @return       :
+ * @brief        : entrega la posicion entera del nodo derecho del nodo padre
+ * @param pNodo: la posicion del nodo dentro de la lista
+ * @return       : retorna un entero que corresponde al indice de la posicion del nodo derecho (posicion entera del nodo)
  */
 int rightChild(int pNodo);
 
