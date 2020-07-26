@@ -72,9 +72,10 @@ int rightChild(int pNodo);
 int parent(int pNodo);
 
 /**
- * @brief        :
- * @param headRef:
- * @return       :
+ * @brief        : mantiene la propiedad base de un max-heap
+ * @param head   : recibe el nodo head de la lista, es decir, el primer nodo
+ * @param posicion: recibe un entero que corresponde a la posicion del indice del nodo dentro de la lista enlazada, sera en este donde se haran los swap para mantener la propiedad base de un max-heap
+ * @return       : no retorna nada
  */
 void maxHeapify(Nodo* head, int posicion);
 
@@ -95,7 +96,7 @@ Nodo* returnNodo(Nodo* head, int pNodo);
 void swap(Nodo* one, Nodo* two);
 
 /**
- * @brief      : funcion que realiza un max_heap, es decir, mantiene la propiedad base de un max-heap
+ * @brief      : funcion que realiza un max_heap, es decir, convierte la lista en un max-heap
  * @param head : recibe el nodo head de la lista doblemente enlazada
  * @return     : no retorna nada
  */
