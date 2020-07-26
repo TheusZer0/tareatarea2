@@ -2,6 +2,8 @@
 // Created by theuszero on 18-07-20.
 //
 
+/*falta comentar el insertionSort en todas las librerias*/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -32,6 +34,7 @@ Nodo * sortedInsert(Nodo* head_ref, Nodo* newNode){ //recibe como parametro el n
     }
     return head_ref;
 }
+
 Nodo* insertionSort(Nodo* head_ref){
     Nodo* sorted = NULL;
     Nodo* current = head_ref;
@@ -46,43 +49,48 @@ Nodo* insertionSort(Nodo* head_ref){
     head_ref = sorted;
     return head_ref;
 }
+
 //heapSort
+
 int countNodos(Nodo* head){
     int numNodos = 0;
-    while (head !=NULL){
-        numNodos++;
-        head = head->next;
+    while (head !=NULL){ //recorre la lista doblemente enlazada
+        numNodos++; //suma 1 a numNodos
+        head = head->next; //avanza al nodo siguiente
     }
-    return numNodos;
-} // cuenta la cantidad de nodos del sistema
+    return numNodos; //retorna la cant de nodos como entero
+}
+
 int posicionNodo(Nodo* Lista, Nodo* pNodo){
-    //Lista = primer nodo de la lista y pNodo = nodo elejido
     Nodo* indice = NULL;
-    //cuenta la cantidad de nodos
-    int posicion=0;
+    int posicion=1;
     indice=Lista;
-    while (indice !=NULL){
-        indice=indice->next;
+    while (indice !=NULL){ //recorre la lista
         if(indice->number == pNodo->number){
             return posicion;
         } else{
             posicion++;
+            indice=indice->next; //ind
         }
     }
 }
+
 int leftChild(int pNodo){
     int tmp = 2*pNodo;
     return tmp;
 }
+
 int rightChild(int pNodo){
     int tmp = ((2*pNodo)+1);
     return tmp;
 }
+
 int parent(int pNodo){
     int nodoPadre=0;
     nodoPadre=(pNodo/2);
     return nodoPadre;
 }
+
 void swap(Nodo* a, Nodo* b) {
     if (a == b)
         return;
@@ -121,6 +129,7 @@ void swap(Nodo* a, Nodo* b) {
             a->previous->next = a;
     }
 }
+
 Nodo* returnNodo(Nodo* head, int pNodo){
     int tmp=0;
     Nodo* indice=NULL;
@@ -137,6 +146,7 @@ Nodo* returnNodo(Nodo* head, int pNodo){
         indice= indice->next;
     }
 }
+
 void maxHeapify(Nodo* head, int posicion){
     int l = leftChild(posicion);
     int r = rightChild(posicion);
