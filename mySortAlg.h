@@ -65,9 +65,9 @@ int leftChild(int pNodo);
 int rightChild(int pNodo);
 
 /**
- * @brief        :
- * @param headRef:
- * @return       :
+ * @brief      : retorna índice (o puntero) del nodo padre
+ * @param pNodo: corresponde al indice del nodo
+ * @return     : retorna un entero que corresponde al indice del nodo padre
  */
 int parent(int pNodo);
 
