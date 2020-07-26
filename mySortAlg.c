@@ -8,17 +8,18 @@
 #include "mySortAlg.h"
 
 // insertionSort
-Nodo * sortedInsert(Nodo* head_ref, Nodo* newNode){
-    //recibe como parametro el nodo head_ref que es el head de la lista y el newNode para el insertSort
+Nodo * sortedInsert(Nodo* head_ref, Nodo* newNode){ //recibe como parametro el nodo head_ref que es el head de la lista y el newNode para el insertSort
     Nodo* current; //se crea un nodo current, correspondiente a un nodo tmp
-    if (head_ref==NULL){
-        head_ref=newNode;
+    if (head_ref==NULL){ //si el head es null
+        head_ref=newNode; //el head apunta al newNode
     } else if (head_ref->number >= newNode->number){
+        //si el number en el nodo head es mayor o igual al number del newNodo entonces el nodo sera  al principio de la lista
         newNode->next=head_ref;
         (newNode->next)->previous=newNode;
         head_ref=newNode;
     } else {
-        current = head_ref;
+        current = head_ref; //el nodo current apunta al head_ref
+        //localiza el nodo despues de
         while ((current->next != NULL) && (((current->next)->number) < newNode->number)){
             current= current->next;
         }
@@ -154,7 +155,4 @@ void maxHeapify(Nodo* head, int posicion){
         swap((returnNodo(head, posicion)),(returnNodo(head, largest)));
         maxHeapify(head, largest);
     }
-}
-void buildMaxHeap(Nodo* head){
-
 }

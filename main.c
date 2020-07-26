@@ -4,14 +4,46 @@
 #include "mySortAlg.h"
 #define MAXCHAR 1000
 
-Nodo *primero=NULL; //se define un nodo global que representara el primer nodo de la lista
-Nodo *ultimo=NULL; //se define un nodo global que representara el ultimo nodo de la lista
-static int cantidadNodos=0; //variable global estatica que contarta
+Nodo *primero=NULL;
+//se define un nodo global que representara el primer nodo de la lista (head)
+Nodo *ultimo=NULL;
+//se define un nodo global que representara el ultimo nodo de la lista (tail)
+static int cantidadNodos=0;
+//variable global estatica que contarta
 
-void generarArchivo(); //genera el archivo data.txt con numeros
+/**
+ * @brief        : generar una base de datos con números enteros aleatorios con valores entre 0 y 1.000.000 y los escribe en un archivo "data.txt" separados cada numeros por una coma
+ * @param        : no recibe parametros
+ * @return       : no retorna nada
+ */
+void generarArchivo();
+
+/**
+ * @brief        : realiza la lista doblemente enlazada llamando a diferetes funciones, realiza la conversion de los numeros del archivo a int y los ingresa a la lista doblemente enlazada
+ * @param FILE* fp: recibe un archivo, por defecto debe ser el "data.txt" ya que es este archivo el que tiene los numeros
+ * @return       : no retorna nada
+ */
 void operacionesArchivo(FILE* fp); //recibe el archivo data.txt y opera sobre el
+
+/**
+ * @brief        : inserta nodos, los enlaza para crear la lista doblemente enlazada y cada nodo nuevo entra siendo un tail, es decir, cada nodo que se agrega se agrega al final
+ * @param int A  : recibe como parametro un numero entero que sera ingresado a al nodo que se crea
+ * @return       : retorna el Nodo con el data (number) ingresado como parametro
+ */
 Nodo * insertarNodo(int A);
+
+/**
+ * @brief        :
+ * @param headRef:
+ * @return       :
+ */
 Nodo* sortedInsert(Nodo* head_ref, Nodo* newNode);
+
+/**
+ * @brief        :
+ * @param headRef:
+ * @return       :
+ */
 void printList(Nodo* head);
 
 int main(/*int argc, char *argv[]*/) {

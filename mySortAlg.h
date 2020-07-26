@@ -11,10 +11,18 @@ typedef struct nd {
     struct nd *next;
 }Nodo;
 
+
 /**
- * @brief        :
+ * Links usados:
+ * https://www.geeksforgeeks.org/create-doubly-linked-list-using-double-pointer-inserting-nodes-list-remains-ascending-order/ //InsertionSort
+ * https://www.geeksforgeeks.org/insertion-sort-doubly-linked-list/ //InsertionSort
+ *
+ */
+
+/**
+ * @brief        : realiza un sorted a
  * @param head_ref: recibe el nodo head_ref, que correspondera al primer nodo de las listas enlazadas.
- * @param newNode: newNode corresponde a un nodo nuevo, que puede apuntar a un nodo vacio o a uno especifico de la lista enlazada.
+ * @param newNode: newNode corresponde a un nodo que puede apuntar a un nodo vacio o a uno especifico de la lista enlazada.
  * @return       : retorna un Nodo.
  */
 Nodo* sortedInsert(Nodo* head_ref, Nodo* newNode);
@@ -27,22 +35,23 @@ Nodo* sortedInsert(Nodo* head_ref, Nodo* newNode);
 Nodo* insertionSort(Nodo* head_ref);
 
 /**
- * @brief        :
- * @param headRef:
- * @return       :
+ * @brief        : entrega un entero que corresponde a la posicion del nodo dentro de la lista
+ * @param head_ref: parametro que corresponde al nodo head de la lista (usado para recorrerla dentro de la misma funcion)
+ * @param elect: el nodo que sera buscado dentro de la lista doblemente enlazada
+ * @return       : retorna un entero que corresponde a la posicion del nodo 'elect' dentro de la lista doblemente enlazada
  */
 int posicionNodo(Nodo* head_ref, Nodo* elect);
 
 /**
- * @brief        :
- * @param headRef:
- * @return       :
+ * @brief        : funcion que cuenta la cantidad total de nodos de la lista doblemente enlazada
+ * @param head: recibe un head (primer nodo) para recorrerlo y asi sacar el total de la lista
+ * @return       : retorna un entero que sera la cantida total de nodos
  */
 int countNodos(Nodo* head);
 
 /**
- * @brief        :
- * @param headRef:
+ * @brief        : entrega el nodo hijo izquierdo de un nodo padre
+ * @param pNodo: la posicion del nodo dentro de la lista
  * @return       :
  */
 int leftChild(int pNodo);
