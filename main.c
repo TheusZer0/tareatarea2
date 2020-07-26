@@ -4,12 +4,10 @@
 #include "mySortAlg.h"
 #define MAXCHAR 1000
 
-Nodo *primero=NULL;
-//se define un nodo global que representara el primer nodo de la lista (head)
-Nodo *ultimo=NULL;
-//se define un nodo global que representara el ultimo nodo de la lista (tail)
-static int cantidadNodos=0;
-//variable global estatica que contarta
+Nodo *primero=NULL; //se define un nodo global que representara el primer nodo de la lista (head)
+Nodo *ultimo=NULL; //se define un nodo global que representara el ultimo nodo de la lista (tail)
+
+static int cantidadNodos=0; //variable global estatica que contarta
 
 /**
  * @brief        : generar una base de datos con números enteros aleatorios con valores entre 0 y 1.000.000 y los escribe en un archivo "data.txt" separados cada numeros por una coma
@@ -40,9 +38,9 @@ Nodo * insertarNodo(int A);
 Nodo* sortedInsert(Nodo* head_ref, Nodo* newNode);
 
 /**
- * @brief        :
- * @param headRef:
- * @return       :
+ * @brief        : imprime la data de los nodos de la lista enlazada, es decir, imprime el "number" de cada uno de los nodos, desde el nodo head hasta el tail
+ * @param head: recibe el nodo head de la lista doblemente enlazada
+ * @return       : corresponde a void, por lo que retorna vacio
  */
 void printList(Nodo* head);
 
