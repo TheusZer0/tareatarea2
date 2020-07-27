@@ -52,6 +52,8 @@ int main(/*int argc, char *argv[]*/) {
     }*/
     FILE* fileList=fopen("data.txt"/*argc[1]*/,"r");
     operacionesArchivo(fileList);
+//    primero=buildMaxHeap(primero);
+    printList(primero);
     return 0;
 }
 

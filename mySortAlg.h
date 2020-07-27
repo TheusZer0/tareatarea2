@@ -99,6 +99,6 @@ void swap(Nodo** headRef,Nodo* nodo1, Nodo* nodo2);
  * @param head : recibe el nodo head de la lista doblemente enlazada
  * @return     : no retorna nada
  */
-void buildMaxHeap(Nodo* head);
+Nodo* buildMaxHeap(Nodo* head);
 
 #endif //TAREATAREA2_MYSORTALG_H

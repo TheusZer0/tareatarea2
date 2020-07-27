@@ -91,7 +91,7 @@ int parent(int pNodo){
     return nodoPadre;
 }
 
-void swap(Nodo** headRef,Nodo* nodo1, Nodo* nodo2) {
+void swamp(Nodo** headRef,Nodo* nodo1, Nodo* nodo2) {
     if(nodo1!=*headRef && nodo2!=*headRef){
         if (nodo1 == nodo2)
             return;
@@ -209,17 +209,16 @@ void maxHeapify(Nodo** head, int posicion){
     }
     if (largest!=posicion){
 //        swap((returnNodo(*head, posicion)),(returnNodo(*head, largest)));
-        swap(head,returnNodo(*head, posicion), ((returnNodo(*head, largest))));
+        swamp(head,returnNodo(*head, posicion), ((returnNodo(*head, largest))));
         maxHeapify(head, largest);
     }
 }
 
-void buildMaxHeap(Nodo* headRef){
+Nodo* buildMaxHeap(Nodo* headRef){
     int aLargo=countNodos(headRef);
     int i = (aLargo/2);
-    int j=i;
-    while (j>0){
+    for (int j = i; j > 0; --j) {
         maxHeapify(&headRef,j);
-        j--;
     }
+    return headRef;
 }
