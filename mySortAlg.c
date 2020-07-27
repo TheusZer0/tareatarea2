@@ -91,42 +91,88 @@ int parent(int pNodo){
     return nodoPadre;
 }
 
-void swap(Nodo* a, Nodo* b) {
-    if (a == b)
-        return;
+void swap(Nodo** headRef,Nodo* nodo1, Nodo* nodo2) {
+    if(nodo1!=*headRef && nodo2!=*headRef){
+        if (nodo1 == nodo2)
+            return;
 
-    if (a->next == b) { // right next to each other
-        a->next = b->next;
-        b->previous = a->previous;
+        if (nodo1->next == nodo2) { // right next to each other
+            nodo1->next = nodo2->next;
+            nodo2->previous = nodo1->previous;
 
-        if (a->next != NULL)
-            a->next->previous = a;
+            if (nodo1->next != NULL)
+                nodo1->next->previous = nodo1;
 
-        if (b->previous != NULL)
-            b->previous->next = b;
+            if (nodo2->previous != NULL)
+                nodo2->previous->next = nodo2;
 
 
-        b->next = a;
-        a->previous = b;
-    } else {
-        Nodo* p = b->previous;
-        Nodo* n = b->next;
+            nodo2->next = nodo1;
+            nodo1->previous = nodo2;
+        } else {
+            Nodo* prev = nodo2->previous;
+            Nodo* n = nodo2->next;
 
-        b->previous = a->previous;
-        b->next = a->next;
+            nodo2->previous = nodo1->previous;
+            nodo2->next = nodo1->next;
 
-        a->previous = p;
-        a->next = n;
+            nodo1->previous = prev;
+            nodo1->next = n;
 
-        if (b->next != NULL)
-            b->next->previous = b;
-        if (b->previous != NULL)
-            b->previous->next = b;
+            if (nodo2->next != NULL)
+                nodo2->next->previous = nodo2;
+            if (nodo2->previous != NULL)
+                nodo2->previous->next = nodo2;
 
-        if (a->next != NULL)
-            a->next->previous = a;
-        if (a->previous != NULL)
-            a->previous->next = a;
+            if (nodo1->next != NULL)
+                nodo1->next->previous = nodo1;
+            if (nodo1->previous != NULL)
+                nodo1->previous->next = nodo1;
+        }
+    }
+    else{
+        if (nodo1 == nodo2)
+            return;
+
+        if (nodo1->next == nodo2) { // right next to each other
+            nodo1->next = nodo2->next;
+            nodo2->previous = nodo1->previous;
+
+            if (nodo1->next != NULL)
+                nodo1->next->previous = nodo1;
+
+            if (nodo2->previous != NULL)
+                nodo2->previous->next = nodo2;
+
+
+            nodo2->next = nodo1;
+            nodo1->previous = nodo2;
+        } else {
+            Nodo* prev = nodo2->previous;
+            Nodo* n = nodo2->next;
+
+            nodo2->previous = nodo1->previous;
+            nodo2->next = nodo1->next;
+
+            nodo1->previous = prev;
+            nodo1->next = n;
+
+            if (nodo2->next != NULL)
+                nodo2->next->previous = nodo2;
+            if (nodo2->previous != NULL)
+                nodo2->previous->next = nodo2;
+
+            if (nodo1->next != NULL)
+                nodo1->next->previous = nodo1;
+            if (nodo1->previous != NULL)
+                nodo1->previous->next = nodo1;
+        }
+        if(nodo1->previous == NULL){
+            *headRef = nodo1;
+        }
+        else{
+            *headRef = nodo2;
+        }
     }
 }
 
@@ -137,7 +183,7 @@ Nodo* returnNodo(Nodo* head, int pNodo){
     int cantNodo=countNodos(head);
     if (pNodo>cantNodo){
         return head;
-    };
+    }
     while (indice !=NULL){
         tmp++;
         if (tmp==pNodo){
@@ -147,22 +193,33 @@ Nodo* returnNodo(Nodo* head, int pNodo){
     }
 }
 
-void maxHeapify(Nodo* head, int posicion){
+void maxHeapify(Nodo** head, int posicion){
     int l = leftChild(posicion);
     int r = rightChild(posicion);
     int cantNodos=0;
-    cantNodos=countNodos(head);
+    cantNodos=countNodos(*head);
     int largest;
-    if ((l<=cantNodos)&&((returnNodo(head, l)->number) > (returnNodo(head, posicion))->number)){
+    if ((l<=cantNodos)&&((returnNodo(*head, l)->number) > (returnNodo(*head, posicion))->number)){
         largest = l;
     } else{
         largest=posicion;
     }
-    if ((r<=(countNodos(head))) && ((returnNodo(head, r)->number) > (returnNodo(head, largest)->number))){
+    if ((r<=(countNodos(*head))) && ((returnNodo(*head, r)->number) > (returnNodo(*head, largest)->number))){
         largest=r;
     }
     if (largest!=posicion){
-        swap((returnNodo(head, posicion)),(returnNodo(head, largest)));
+//        swap((returnNodo(*head, posicion)),(returnNodo(*head, largest)));
+        swap(head,returnNodo(*head, posicion), ((returnNodo(*head, largest))));
         maxHeapify(head, largest);
+    }
+}
+
+void buildMaxHeap(Nodo* headRef){
+    int aLargo=countNodos(headRef);
+    int i = (aLargo/2);
+    int j=i;
+    while (j>0){
+        maxHeapify(&headRef,j);
+        j--;
     }
 }
