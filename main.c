@@ -31,13 +31,6 @@ void operacionesArchivo(FILE* fp); //recibe el archivo data.txt y opera sobre el
 Nodo * insertarNodo(int A);
 
 /**
- * @brief        :
- * @param headRef:
- * @return       :
- */
-Nodo* sortedInsert(Nodo* head_ref, Nodo* newNode);
-
-/**
  * @brief        : imprime la data de los nodos de la lista enlazada, es decir, imprime el "number" de cada uno de los nodos, desde el nodo head hasta el tail
  * @param head: recibe el nodo head de la lista doblemente enlazada
  * @return       : corresponde a void, por lo que retorna vacio
@@ -45,19 +38,19 @@ Nodo* sortedInsert(Nodo* head_ref, Nodo* newNode);
 void printList(Nodo* head);
 
 int main(/*int argc, char *argv[]*/) {
-    generarArchivo();
+    generarArchivo(150);
     /*if (argc!=2){
         fprintf(stderr,"ejecutar: %s data.txt", argv[0]);
         exit(EXIT_FAILURE);
     }*/
     FILE* fileList=fopen("data.txt"/*argc[1]*/,"r");
     operacionesArchivo(fileList);
-//    primero=buildMaxHeap(primero);
+    primero=buildMaxHeap(primero);
     printList(primero);
     return 0;
 }
 
-void generarArchivo(){
+void generarArchivo(int data){
     int num=0;
     int cont=0;
     char buffer [50];
@@ -71,7 +64,7 @@ void generarArchivo(){
             //se escribe en un archivo
             fprintf(fp,"%s,", buffer);
         }
-        if (cont==150){
+        if (cont==data){
             fclose(fp); //se cierra el archivo
             break;
         }
