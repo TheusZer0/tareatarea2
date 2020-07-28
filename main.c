@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include <string.h>
 #include "mySortAlg.h"
+#include "mySearchAlg.h"
+
 #define MAXCHAR 1000
 
 Nodo *primero=NULL; //se define un nodo global que representara el primer nodo de la lista (head)
@@ -37,16 +39,52 @@ Nodo * insertarNodo(int A);
  */
 void printList(Nodo* head);
 
+void eliminarLista(Nodo* head_ref);
+
+
 int main(/*int argc, char *argv[]*/) {
-    generarArchivo(150);
-    /*if (argc!=2){
-        fprintf(stderr,"ejecutar: %s data.txt", argv[0]);
-        exit(EXIT_FAILURE);
-    }*/
-    FILE* fileList=fopen("data.txt"/*argc[1]*/,"r");
-    operacionesArchivo(fileList);
-    primero=buildMaxHeap(primero);
-    printList(primero);
+    int contador=0;
+    if (contador==0){
+        Nodo* tmp = NULL;
+        generarArchivo(150);
+        FILE* fileList=fopen("data.txt"/*argc[1]*/,"r");
+        operacionesArchivo(fileList);
+        tmp=primero;
+        insertionSort(tmp);
+        primero=buildMaxHeap(primero);
+        recuperarNumAleatorio(tmp);
+
+        contador=contador+1;
+        printf("1 ");
+
+    }
+    if (contador==1){
+        Nodo* tmp = NULL;
+        generarArchivo(1500);
+        FILE* fileList=fopen("data.txt"/*argc[1]*/,"r");
+        operacionesArchivo(fileList);
+        tmp=primero;
+        insertionSort(tmp);
+        primero=buildMaxHeap(primero);
+        recuperarNumAleatorio(tmp);
+
+        contador=contador+1;
+        printf("2 ");
+
+    }
+    if (contador==2){
+        Nodo* tmp = NULL;
+        generarArchivo(15000);
+        FILE* fileList=fopen("data.txt"/*argc[1]*/,"r");
+        operacionesArchivo(fileList);
+        tmp=primero;
+        insertionSort(tmp);
+        primero=buildMaxHeap(primero);
+        recuperarNumAleatorio(tmp);
+
+        printf("3");
+        contador=contador+1;
+    }
     return 0;
 }
 
@@ -112,4 +150,12 @@ void printList(Nodo* head){
         printf("%d\n",head->number);//printa el number en el head
         head = head->next; //head apunta al siguiente
     }
+}
+
+void eliminarLista(Nodo* head_ref){
+    while (head_ref !=NULL){ //si el head tiene contenido entonces se recorre la lista enlazada
+        head_ref = head_ref->next; //head apunta al siguiente
+        head_ref = NULL;
+    }
+    head_ref=NULL;
 }
