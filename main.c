@@ -41,7 +41,6 @@ void printList(Nodo* head);
 
 void eliminarLista(Nodo* head_ref);
 
-
 int main(/*int argc, char *argv[]*/) {
     int contador=0;
     if (contador==0){
@@ -65,9 +64,8 @@ int main(/*int argc, char *argv[]*/) {
         operacionesArchivo(fileList);
         tmp=primero;
         insertionSort(tmp);
-        primero=buildMaxHeap(primero);
-        recuperarNumAleatorio(tmp);
-
+        tmp=heapsort(primero);
+        recuperarNumAleatorio(insertionSort(tmp));
         contador=contador+1;
         printf("2 ");
 

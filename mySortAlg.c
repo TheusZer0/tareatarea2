@@ -193,24 +193,23 @@ Nodo* returnNodo(Nodo* head, int pNodo){
     }
 }
 
-void maxHeapify(Nodo** head, int posicion){
+void maxHeapify(Nodo** head, int posicion, int heapzise){
     int l = leftChild(posicion);
     int r = rightChild(posicion);
     int cantNodos=0;
     cantNodos=countNodos(*head);
     int largest;
-    if ((l<=cantNodos)&&((returnNodo(*head, l)->number) > (returnNodo(*head, posicion))->number)){
+    if ((l<=heapzise)&&((returnNodo(*head, l)->number) > (returnNodo(*head, posicion))->number)){
         largest = l;
     } else{
         largest=posicion;
     }
-    if ((r<=(countNodos(*head))) && ((returnNodo(*head, r)->number) > (returnNodo(*head, largest)->number))){
+    if ((r<=heapzise) && (returnNodo(*head, r)->number > (returnNodo(*head, largest)->number))){
         largest=r;
     }
     if (largest!=posicion){
-//        swap((returnNodo(*head, posicion)),(returnNodo(*head, largest)));
         swamp(head,returnNodo(*head, posicion), ((returnNodo(*head, largest))));
-        maxHeapify(head, largest);
+        maxHeapify(head, largest,heapzise);
     }
 }
 
@@ -218,7 +217,19 @@ Nodo* buildMaxHeap(Nodo* headRef){
     int aLargo=countNodos(headRef);
     int i = (aLargo/2);
     for (int j = i; j > 0; --j) {
-        maxHeapify(&headRef,j);
+        maxHeapify(&headRef,j,aLargo);
     }
     return headRef;
+}
+
+Nodo* heapsort(Nodo* head_ref){
+    Nodo* tmp = head_ref;
+    tmp=buildMaxHeap(tmp);
+    int heapzise = countNodos(tmp);
+    for (int i = countNodos(tmp); i>=2 ; i--) {
+        swamp(&tmp,returnNodo(tmp,1),returnNodo(tmp,i));
+        heapzise--;
+        maxHeapify(&tmp,1,heapzise);
+    }
+    return tmp;
 }

@@ -76,7 +76,7 @@ int parent(int pNodo);
  * @param posicion: recibe un entero que corresponde a la posicion del indice del nodo dentro de la lista enlazada, sera en este donde se haran los swap para mantener la propiedad base de un max-heap
  * @return       : no retorna nada
  */
-void maxHeapify(Nodo** head, int posicion);
+void maxHeapify(Nodo** head, int posicion, int heapzise);
 
 /**
  * @brief        : funcion que retorna un nodo en base a su posicion
@@ -100,5 +100,7 @@ void swap(Nodo** headRef,Nodo* nodo1, Nodo* nodo2);
  * @return     : no retorna nada
  */
 Nodo* buildMaxHeap(Nodo* head);
+
+Nodo* heapsort(Nodo* head_ref);
 
 #endif //TAREATAREA2_MYSORTALG_H
