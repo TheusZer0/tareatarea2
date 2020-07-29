@@ -39,7 +39,7 @@ Nodo * insertarNodo(int A);
  */
 void printList(Nodo* head);
 
-void eliminarLista(Nodo* head_ref);
+void eliminarLista(Nodo* headRef);
 
 int main(/*int argc, char *argv[]*/) {
     int contador=0;
@@ -126,10 +126,16 @@ void printList(Nodo* head){
     }
 }
 
-void eliminarLista(Nodo* head_ref){
-    while (head_ref !=NULL){ //si el head tiene contenido entonces se recorre la lista enlazada
-        head_ref = head_ref->next; //head apunta al siguiente
-        head_ref = NULL;
+void eliminarLista(Nodo* headRef){
+    Nodo* temp = headRef;
+    if(headRef==NULL);
+    else{
+        while(headRef!=NULL){
+            //liberamos memoria de cada nodo en la lista
+            temp = headRef;
+            headRef = (headRef)->next ;
+            free(temp);
+        }
     }
-    head_ref=NULL;
+    headRef = NULL; //terminamos con el puntero apuntando a NULL;
 }
