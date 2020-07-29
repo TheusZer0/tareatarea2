@@ -56,8 +56,10 @@ int main(/*int argc, char *argv[]*/) {
         tmp=heapsort(tmp);
         printList(tmp);
         printf("#--------------#\n");
+
         printf("#--------------#\n");
         contador=contador+1;
+        eliminarLista(primero);
     }
     return 0;
 }
