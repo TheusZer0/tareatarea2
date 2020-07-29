@@ -39,27 +39,44 @@ Nodo * insertarNodo(int A);
  */
 void printList(Nodo* head);
 
-void eliminarLista(Nodo* headRef);
+Nodo* eliminarLista(Nodo* headRef);
 
 int main(/*int argc, char *argv[]*/) {
     int contador=0;
     if (contador==0){
-        Nodo* tmp = NULL;
-        generarArchivo(150);
+        Nodo* insertSort = NULL;
+        Nodo* heapSort = NULL;
+        generarArchivo(15);
         FILE* fileList=fopen("data.txt"/*argc[1]*/,"r");
         operacionesArchivo(fileList);
-        tmp=primero;
+        insertSort=primero;
+        heapSort=primero;
         printf("#--------------#\n");
-        insertionSort(tmp);
-        printList(tmp);
+        printf("Antes del inserSort:\n");
         printf("#--------------#\n");
-        tmp=heapsort(tmp);
-        printList(tmp);
+        printList(insertSort);
         printf("#--------------#\n");
-
+        printf("Despues del inserSort:\n");
         printf("#--------------#\n");
+        insertionSort(insertSort);
+        printList(insertSort);
+        printf("#--------------#\n");
+        printf("Antes del heapSort:\n");
+        printf("#--------------#\n");
+        printList(heapSort);
+        printf("#--------------#\n");
+        printf("Despues del heapSort:\n");
+        printf("#--------------#\n");
+        heapSort=heapsort(heapSort);
+        printList(heapSort);
+        printf("#--------------#\n");
+        printf("posicion de los nodos segun BinarySearch\n");
+        printf("#--------------#\n");
+        recuperarNumAleatorio(insertSort);
+        printf("#--------------#\n");
+        primero=eliminarLista(primero);
+        //eliminar lista enlazada
         contador=contador+1;
-        eliminarLista(primero);
     }
     return 0;
 }
@@ -127,17 +144,13 @@ void printList(Nodo* head){
         head = head->next; //head apunta al siguiente
     }
 }
-
-void eliminarLista(Nodo* headRef){
+Nodo* eliminarLista(Nodo* headRef){
     Nodo* temp = headRef;
-    if(headRef==NULL);
-    else{
-        while(headRef!=NULL){
-            //liberamos memoria de cada nodo en la lista
-            temp = headRef;
-            headRef = (headRef)->next ;
-            free(temp);
-        }
+    while(headRef!=NULL){
+        temp = headRef;
+        headRef = (headRef)->next ;
+        free(temp);
     }
-    headRef = NULL; //terminamos con el puntero apuntando a NULL;
+    headRef = NULL;
+    return headRef;
 }
