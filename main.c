@@ -49,38 +49,14 @@ int main(/*int argc, char *argv[]*/) {
         FILE* fileList=fopen("data.txt"/*argc[1]*/,"r");
         operacionesArchivo(fileList);
         tmp=primero;
+        printf("#--------------#\n");
         insertionSort(tmp);
-        primero=buildMaxHeap(primero);
-        recuperarNumAleatorio(tmp);
-
-        contador=contador+1;
-        printf("1 ");
-
-    }
-    if (contador==1){
-        Nodo* tmp = NULL;
-        generarArchivo(1500);
-        FILE* fileList=fopen("data.txt"/*argc[1]*/,"r");
-        operacionesArchivo(fileList);
-        tmp=primero;
-        insertionSort(tmp);
-        tmp=heapsort(primero);
-        recuperarNumAleatorio(insertionSort(tmp));
-        contador=contador+1;
-        printf("2 ");
-
-    }
-    if (contador==2){
-        Nodo* tmp = NULL;
-        generarArchivo(15000);
-        FILE* fileList=fopen("data.txt"/*argc[1]*/,"r");
-        operacionesArchivo(fileList);
-        tmp=primero;
-        insertionSort(tmp);
-        primero=buildMaxHeap(primero);
-        recuperarNumAleatorio(tmp);
-
-        printf("3");
+        printList(tmp);
+        printf("#--------------#\n");
+        tmp=heapsort(tmp);
+        printList(tmp);
+        printf("#--------------#\n");
+        printf("#--------------#\n");
         contador=contador+1;
     }
     return 0;
