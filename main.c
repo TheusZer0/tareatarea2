@@ -50,6 +50,7 @@ int main(/*int argc, char *argv[]*/) {
     mainFunction(150);
     mainFunction(1500);
     mainFunction(15000);
+    printf("\n");
     return 0;
 }
 
