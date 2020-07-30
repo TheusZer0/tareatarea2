@@ -67,17 +67,18 @@ void mainFunction(int numData){
     gettimeofday(&end, NULL);
     float tiempoInsertSort,tiempoHeapSort,binarySearch;
     tiempoInsertSort = (end.tv_sec - start.tv_sec) * 1000 + (end.tv_usec - start.tv_usec) / 1000.0;
-    printf("El tiempo que demoro es: %f \n",tiempoInsertSort);
+    printf("#############################\n");
+    printf("El tiempo que demoro el insertSort es: %f \n",tiempoInsertSort);
     gettimeofday(&start, NULL);
     heapSort=heapsort(heapSort);
     gettimeofday(&end, NULL);
     tiempoHeapSort = (end.tv_sec - start.tv_sec) * 1000 + (end.tv_usec - start.tv_usec) / 1000.0;
-    printf("El tiempo que demoro es: %f \n",tiempoHeapSort);
+    printf("El tiempo que demoro el heapSort es: %f \n",tiempoHeapSort);
     gettimeofday(&start, NULL);
     recuperarNumAleatorio(insertSort);
     gettimeofday(&end, NULL);
     binarySearch = (end.tv_sec - start.tv_sec) * 1000 + (end.tv_usec - start.tv_usec) / 1000.0;
-    printf("El tiempo que demoro es: %f \n",binarySearch);
+    printf("El tiempo que demoro la busqueda binaria es: %f \n",binarySearch);
     primero=eliminarLista(primero);
     //eliminar lista enlazada
 }

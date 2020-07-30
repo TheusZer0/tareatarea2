@@ -31,7 +31,8 @@ void recuperarNumAleatorio(Nodo* head_ref){
     int pNodo =0;
     for (int i = 1; i <= 100 ; ++i) {
         num= rand() % cantNodos+1;
-        pNodo=binarySearch(head_ref,returnNodo(head_ref,num)->number,1,cantNodos);
-        printf("la posicion del nodo en el la lista ordenada es: %d y el nodo contiene la data: %d \n",pNodo,returnNodo(head_ref,pNodo)->number);
+        binarySearch(head_ref,returnNodo(head_ref,num)->number,1,cantNodos);
+//        pNodo=binarySearch(head_ref,returnNodo(head_ref,num)->number,1,cantNodos);
+//        printf("la posicion del nodo en el la lista ordenada es: %d y el nodo contiene la data: %d \n",pNodo,returnNodo(head_ref,pNodo)->number);
     }
 }
