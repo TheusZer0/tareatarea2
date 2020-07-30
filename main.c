@@ -71,7 +71,7 @@ int main(/*int argc, char *argv[]*/) {
     printf("el promedio del heapSort con la cantidad de total de datos (%d) es: %f \n",cantDatosUno,resultHeapSort);
     printf("el promedio del binarySearch con la cantidad de total de datos (%d) es: %f \n",cantDatosUno,resultBinarySearch);
 
-    cantDatosUno=150;
+    cantDatosUno=15000;
     for (int i = 0; i <= 2 ; ++i) {
         mainFunction(cantDatosUno,i);
     }
