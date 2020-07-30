@@ -10,7 +10,9 @@
 Nodo *primero=NULL; //se define un nodo global que representara el primer nodo de la lista (head)
 Nodo *ultimo=NULL; //se define un nodo global que representara el ultimo nodo de la lista (tail)
 
-int insertSort[5];
+float insertSortArray[5];
+float heapSortArray[5];
+float binarySearchArray[5];
 
 static int cantidadNodos=0; //variable global estatica que contarta
 
@@ -44,17 +46,18 @@ void printList(Nodo* head);
 
 Nodo* eliminarLista(Nodo* headRef);
 
-void mainFunction(int numData);
+void mainFunction(int numData, int n);
 
 int main(/*int argc, char *argv[]*/) {
-    mainFunction(150);
-    mainFunction(1500);
-    mainFunction(15000);
-    printf("\n");
+    for (int i = 1; i <= 5 ; ++i) {
+        mainFunction(1500,i);
+    }
+    float result = (insertSortArray[0]+insertSortArray[1]+insertSortArray[2]+insertSortArray[3]+insertSortArray[4])/5;
+    printf("el promedio es: %f ",result);
     return 0;
 }
 
-void mainFunction(int numData){
+void mainFunction(int numData, int n/*sacar esto en caso de no funcionar*/){
     struct timeval start , end ;
     Nodo* insertSort = NULL;
     Nodo* heapSort = NULL;
@@ -80,6 +83,9 @@ void mainFunction(int numData){
     gettimeofday(&end, NULL);
     binarySearch = (end.tv_sec - start.tv_sec) * 1000 + (end.tv_usec - start.tv_usec) / 1000.0;
     printf("El tiempo que demoro la busqueda binaria es: %f \n",binarySearch);
+    insertSortArray[n] = tiempoInsertSort;//esto igual
+    heapSortArray[n] = tiempoHeapSort;//esto igual
+    binarySearchArray[n] = binarySearch;//esto igual
     primero=eliminarLista(primero);
     //eliminar lista enlazada
 }
@@ -147,6 +153,7 @@ void printList(Nodo* head){
         head = head->next; //head apunta al siguiente
     }
 }
+
 Nodo* eliminarLista(Nodo* headRef){
     Nodo* temp = headRef;
     while(headRef!=NULL){
