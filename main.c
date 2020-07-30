@@ -4,7 +4,6 @@
 #include <sys/time.h>
 #include "mySortAlg.h"
 #include "mySearchAlg.h"
-
 #define MAXCHAR 1000
 
 Nodo *primero=NULL; //se define un nodo global que representara el primer nodo de la lista (head)
@@ -44,11 +43,21 @@ Nodo * insertarNodo(int A);
  */
 void printList(Nodo* head);
 
+/**
+ * @brief        : inserta nodos, los enlaza para crear la lista doblemente enlazada y cada nodo nuevo entra siendo un tail, es decir, cada nodo que se agrega se agrega al final
+ * @param int A  : recibe como parametro un numero entero que sera ingresado a al nodo que se crea
+ * @return       : retorna el Nodo con el data (number) ingresado como parametro
+ */
 Nodo* eliminarLista(Nodo* headRef);
 
+/**
+ * @brief        : inserta nodos, los enlaza para crear la lista doblemente enlazada y cada nodo nuevo entra siendo un tail, es decir, cada nodo que se agrega se agrega al final
+ * @param int A  : recibe como parametro un numero entero que sera ingresado a al nodo que se crea
+ * @return       : retorna el Nodo con el data (number) ingresado como parametro
+ */
 void mainFunction(int numData, int n);
 
-int main(/*int argc, char *argv[]*/) {
+int main(/*int argc, char *argv[]*/){
     int cantDatosUno=150;
     for (int i = 0; i <= 2 ; ++i) {
         mainFunction(cantDatosUno,i);
