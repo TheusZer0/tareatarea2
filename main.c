@@ -53,7 +53,7 @@ int main(/*int argc, char *argv[]*/) {
         mainFunction(1500,i);
     }
     float result = (insertSortArray[0]+insertSortArray[1]+insertSortArray[2]+insertSortArray[3]+insertSortArray[4])/5;
-    printf("el promedio es: %f ",result);
+    printf("\nel promedio del heapSort es: %f ",result);
     return 0;
 }
 
