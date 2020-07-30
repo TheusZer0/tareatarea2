@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <sys/time.h>
 #include "mySortAlg.h"
 #include "mySearchAlg.h"
 
@@ -42,11 +43,86 @@ void printList(Nodo* head);
 Nodo* eliminarLista(Nodo* headRef);
 
 int main(/*int argc, char *argv[]*/) {
+    struct timeval start , end ;
     int contador=0;
     if (contador==0){
         Nodo* insertSort = NULL;
         Nodo* heapSort = NULL;
         generarArchivo(150);
+        FILE* fileList=fopen("data.txt"/*argc[1]*/,"r");
+        operacionesArchivo(fileList);
+        insertSort=primero;
+        heapSort=primero;
+        printf("#--------------#\n");
+        printf("Antes del inserSort:\n");
+        printf("#--------------#\n");
+        printList(insertSort);
+        printf("#--------------#\n");
+        printf("Despues del inserSort:\n");
+        printf("#--------------#\n");
+        gettimeofday(&start, NULL);
+        insertionSort(insertSort);
+        gettimeofday(&end, NULL);
+        float tiempo = (end.tv_sec - start.tv_sec)*1000 + (end.tv_usec - start.tv_usec)/1000.0;
+        printf("El tiempo que demoro es: %f \n",tiempo);
+        printList(insertSort);
+        printf("#--------------#\n");
+        printf("Antes del heapSort:\n");
+        printf("#--------------#\n");
+        printList(heapSort);
+        printf("#--------------#\n");
+        printf("Despues del heapSort:\n");
+        printf("#--------------#\n");
+        heapSort=heapsort(heapSort);
+        printList(heapSort);
+        printf("#--------------#\n");
+        printf("posicion de los nodos segun BinarySearch\n");
+        printf("#--------------#\n");
+        recuperarNumAleatorio(insertSort);
+        printf("#--------------#\n");
+        primero=eliminarLista(primero);
+        //eliminar lista enlazada
+        contador=contador+1;
+    }
+    if (contador==1){
+        Nodo* insertSort = NULL;
+        Nodo* heapSort = NULL;
+        generarArchivo(1500);
+        FILE* fileList=fopen("data.txt"/*argc[1]*/,"r");
+        operacionesArchivo(fileList);
+        insertSort=primero;
+        heapSort=primero;
+        printf("#--------------#\n");
+        printf("Antes del inserSort:\n");
+        printf("#--------------#\n");
+        printList(insertSort);
+        printf("#--------------#\n");
+        printf("Despues del inserSort:\n");
+        printf("#--------------#\n");
+        insertionSort(insertSort);
+        printList(insertSort);
+        printf("#--------------#\n");
+        printf("Antes del heapSort:\n");
+        printf("#--------------#\n");
+        printList(heapSort);
+        printf("#--------------#\n");
+        printf("Despues del heapSort:\n");
+        printf("#--------------#\n");
+        heapSort=heapsort(heapSort);
+        printList(heapSort);
+        printf("#--------------#\n");
+        printf("posicion de los nodos segun BinarySearch\n");
+        printf("#--------------#\n");
+        recuperarNumAleatorio(insertSort);
+        printf("#--------------#\n");
+        primero=eliminarLista(primero);
+        //eliminar lista enlazada
+        contador=contador+1;
+    }
+    if (contador==2){
+        Nodo* insertSort = NULL;
+        Nodo* heapSort = NULL;
+        generarArchivo(15000);
         FILE* fileList=fopen("data.txt"/*argc[1]*/,"r");
         operacionesArchivo(fileList);
         insertSort=primero;
