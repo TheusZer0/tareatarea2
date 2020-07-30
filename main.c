@@ -46,7 +46,7 @@ int main(/*int argc, char *argv[]*/) {
     if (contador==0){
         Nodo* insertSort = NULL;
         Nodo* heapSort = NULL;
-        generarArchivo(15);
+        generarArchivo(150);
         FILE* fileList=fopen("data.txt"/*argc[1]*/,"r");
         operacionesArchivo(fileList);
         insertSort=primero;
