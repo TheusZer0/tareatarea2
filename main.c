@@ -10,9 +10,9 @@
 Nodo *primero=NULL; //se define un nodo global que representara el primer nodo de la lista (head)
 Nodo *ultimo=NULL; //se define un nodo global que representara el ultimo nodo de la lista (tail)
 
-float insertSortArray[5];
-float heapSortArray[5];
-float binarySearchArray[5];
+float insertSortArray[3];
+float heapSortArray[3];
+float binarySearchArray[3];
 
 static int cantidadNodos=0; //variable global estatica que contarta
 
@@ -49,11 +49,16 @@ Nodo* eliminarLista(Nodo* headRef);
 void mainFunction(int numData, int n);
 
 int main(/*int argc, char *argv[]*/) {
+    int cantDatosUno=150;
     for (int i = 0; i <= 2 ; ++i) {
-        mainFunction(150,i);
+        mainFunction(cantDatosUno,i);
     }
-    float result = (insertSortArray[0]+insertSortArray[1]+insertSortArray[2])/3;
-    printf("\nel promedio del heapSort es: %f ",result);
+    float resultInsertSort = (insertSortArray[0]+insertSortArray[1]+insertSortArray[2])/3;
+    float resultHeapSort = (heapSortArray[0]+heapSortArray[1]+heapSortArray[2])/3;
+    float resultBinarySearch = (binarySearchArray[0]+binarySearchArray[1]+binarySearchArray[2])/3;
+    printf("\nel promedio del insertSort con la cantidad de total de datos (%d) es: %f ",cantDatosUno,resultInsertSort);
+    printf("\nel promedio del heapSort con la cantidad de total de datos (%d) es: %f ",cantDatosUno,resultHeapSort);
+    printf("\nel promedio del binarySearch con la cantidad de total de datos (%d) es: %f ",cantDatosUno,resultBinarySearch);
     return 0;
 }
 
