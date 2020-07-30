@@ -84,7 +84,7 @@ int main(/*int argc, char *argv[]*/) {
     return 0;
 }
 
-void mainFunction(int numData, int n/*sacar esto en caso de no funcionar*/){
+void mainFunction(int numData, int n){
     struct timeval start , end ;
     Nodo* insertSort = NULL;
     Nodo* heapSort = NULL;
@@ -110,11 +110,10 @@ void mainFunction(int numData, int n/*sacar esto en caso de no funcionar*/){
     gettimeofday(&end, NULL);
     binarySearch = (end.tv_sec - start.tv_sec) * 1000 + (end.tv_usec - start.tv_usec) / 1000.0;
     printf("El tiempo que demoro la busqueda binaria es: %f \n",binarySearch);
-    insertSortArray[n] = tiempoInsertSort;//esto igual
-    heapSortArray[n] = tiempoHeapSort;//esto igual
-    binarySearchArray[n] = binarySearch;//esto igual
+    insertSortArray[n] = tiempoInsertSort;
+    heapSortArray[n] = tiempoHeapSort;
+    binarySearchArray[n] = binarySearch;
     primero=eliminarLista(primero);
-    //eliminar lista enlazada
 }
 
 void generarArchivo(int data){
