@@ -49,10 +49,10 @@ Nodo* eliminarLista(Nodo* headRef);
 void mainFunction(int numData, int n);
 
 int main(/*int argc, char *argv[]*/) {
-    for (int i = 1; i <= 5 ; ++i) {
-        mainFunction(1500,i);
+    for (int i = 0; i <= 2 ; ++i) {
+        mainFunction(150,i);
     }
-    float result = (insertSortArray[0]+insertSortArray[1]+insertSortArray[2]+insertSortArray[3]+insertSortArray[4])/5;
+    float result = (insertSortArray[0]+insertSortArray[1]+insertSortArray[2])/3;
     printf("\nel promedio del heapSort es: %f ",result);
     return 0;
 }
