@@ -10,6 +10,8 @@
 Nodo *primero=NULL; //se define un nodo global que representara el primer nodo de la lista (head)
 Nodo *ultimo=NULL; //se define un nodo global que representara el ultimo nodo de la lista (tail)
 
+int insertSort[5];
+
 static int cantidadNodos=0; //variable global estatica que contarta
 
 /**
@@ -46,6 +48,8 @@ void mainFunction(int numData);
 
 int main(/*int argc, char *argv[]*/) {
     mainFunction(150);
+    mainFunction(1500);
+    mainFunction(15000);
     return 0;
 }
 
