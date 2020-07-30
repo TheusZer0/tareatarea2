@@ -89,6 +89,7 @@ int main(/*int argc, char *argv[]*/) {
 }
 
 void mainFunction(int numData, int n){
+    primero=eliminarLista(primero);
     struct timeval start , end ;
     Nodo* insertSort = NULL;
     Nodo* heapSort = NULL;
