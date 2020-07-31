@@ -25,14 +25,14 @@ static int cantidadNodos=0; //variable global estatica que contarta
  * @param        : no recibe parametros
  * @return       : no retorna nada
  */
-void generarArchivo();
+void generarArchivo(int data);
 
 /**
  * @brief        : realiza la lista doblemente enlazada llamando a diferetes funciones, realiza la conversion de los numeros del archivo a int y los ingresa a la lista doblemente enlazada
  * @param FILE* fp: recibe un archivo, por defecto debe ser el "data.txt" ya que es este archivo el que tiene los numeros
  * @return       : no retorna nada
  */
-void operacionesArchivo(FILE* fp); //recibe el archivo data.txt y opera sobre el
+void operacionesArchivo(FILE* fp, int cantList); //recibe el archivo data.txt y opera sobre el
 
 /**
  * @brief        : inserta nodos, los enlaza para crear la lista doblemente enlazada y cada nodo nuevo entra siendo un tail, es decir, cada nodo que se agrega se agrega al final
@@ -61,12 +61,13 @@ Nodo* eliminarLista(Nodo* headRef);
  * @param n  : el N es la cantidad de veces que se guardara un tiempo dentro del arreglo MAX 3
  * @return       : no retorna nada
  */
-void mainFunction(int numData, int n);
+void mainFunction(int n,int x);
 
 int main(/*int argc, char *argv[]*/){
+    generarArchivo(15000);
     int cantDatosUno=150;
     for (int i = 0; i <= 2 ; ++i) {
-        mainFunction(cantDatosUno,i);
+        mainFunction(i,cantDatosUno);
     }
     float resultInsertSort = (insertSortArray[0]+insertSortArray[1]+insertSortArray[2])/3;
     float resultHeapSort = (heapSortArray[0]+heapSortArray[1]+heapSortArray[2])/3;
@@ -78,7 +79,7 @@ int main(/*int argc, char *argv[]*/){
 
     cantDatosUno=1500;
     for (int i = 0; i <= 2 ; ++i) {
-        mainFunction(cantDatosUno,i);
+        mainFunction(i,cantDatosUno);
     }
     resultInsertSort = (insertSortArray[0]+insertSortArray[1]+insertSortArray[2])/3;
     resultHeapSort = (heapSortArray[0]+heapSortArray[1]+heapSortArray[2])/3;
@@ -90,7 +91,7 @@ int main(/*int argc, char *argv[]*/){
 
     cantDatosUno=15000;
     for (int i = 0; i <= 2 ; ++i) {
-        mainFunction(cantDatosUno,i);
+        mainFunction(i,cantDatosUno);
     }
     resultInsertSort = (insertSortArray[0]+insertSortArray[1]+insertSortArray[2])/3;
     resultHeapSort = (heapSortArray[0]+heapSortArray[1]+heapSortArray[2])/3;
@@ -103,14 +104,13 @@ int main(/*int argc, char *argv[]*/){
     return 0;
 }
 
-void mainFunction(int numData, int n){
+void mainFunction(int n,int x){
     primero=eliminarLista(primero);
     struct timeval start , end ;
     Nodo* insertSort = NULL;
     Nodo* heapSort = NULL;
-    generarArchivo(numData);
     FILE* fileList=fopen("data.txt","r");
-    operacionesArchivo(fileList);
+    operacionesArchivo(fileList,x);
     insertSort=primero;
     heapSort=primero;
     gettimeofday(&start, NULL);
@@ -153,9 +153,10 @@ void generarArchivo(int data){
     }
 }
 
-void operacionesArchivo(FILE* fp){
+void operacionesArchivo(FILE* fp, int cantList){
     char str[MAXCHAR];
     int num;
+    int cont=0;
     if(fp==NULL){ //si el archivo en NULL entonces entrega el mensaje
         printf("no se encontro el archivo %s",fp);
     }
@@ -163,9 +164,14 @@ void operacionesArchivo(FILE* fp){
         char *token;
         token=strtok(str,",");
         while(token != NULL){
-            num = atoi(token); //la funcion atoi convierte el char en entero
-            insertarNodo(num); //se inserta el num en la lista doblemente enlazada
-            token = strtok(NULL,",");
+            if (cont == cantList){
+                break;
+            }else{
+                num = atoi(token); //la funcion atoi convierte el char en entero
+                insertarNodo(num); //se inserta el num en la lista doblemente enlazada
+                token = strtok(NULL,",");
+                cont=cont+1;
+            }
         }
     }
 }
