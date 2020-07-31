@@ -9,8 +9,13 @@
 Nodo *primero=NULL; //se define un nodo global que representara el primer nodo de la lista (head)
 Nodo *ultimo=NULL; //se define un nodo global que representara el ultimo nodo de la lista (tail)
 
+//array que guarda los tiempos de 3 ejecuciones para una cantidad de datos X en el archivo con el algoritmo de InsertSort
 float insertSortArray[3];
+
+//array que guarda los tiempos de 3 ejecuciones para una cantidad de datos X en el archivo con el algoritmo de heapSort
 float heapSortArray[3];
+
+//array que guarda los tiempos de 3 ejecuciones para una cantidad de datos X en el archivo con el algoritmo de binarySearch
 float binarySearchArray[3];
 
 static int cantidadNodos=0; //variable global estatica que contarta
@@ -38,22 +43,23 @@ Nodo * insertarNodo(int A);
 
 /**
  * @brief        : imprime la data de los nodos de la lista enlazada, es decir, imprime el "number" de cada uno de los nodos, desde el nodo head hasta el tail
- * @param head: recibe el nodo head de la lista doblemente enlazada
+ * @param head   : recibe el nodo head de la lista doblemente enlazada
  * @return       : corresponde a void, por lo que retorna vacio
  */
 void printList(Nodo* head);
 
 /**
- * @brief        : inserta nodos, los enlaza para crear la lista doblemente enlazada y cada nodo nuevo entra siendo un tail, es decir, cada nodo que se agrega se agrega al final
- * @param int A  : recibe como parametro un numero entero que sera ingresado a al nodo que se crea
- * @return       : retorna el Nodo con el data (number) ingresado como parametro
+ * @brief        : elimina una lista doblemente enlazada gracias al uso de un loop
+ * @param headRef  : recibe como parametro el head de una lista doblemente enlazada
+ * @return       : retorna el Nodo NULL
  */
 Nodo* eliminarLista(Nodo* headRef);
 
 /**
- * @brief        : inserta nodos, los enlaza para crear la lista doblemente enlazada y cada nodo nuevo entra siendo un tail, es decir, cada nodo que se agrega se agrega al final
- * @param int A  : recibe como parametro un numero entero que sera ingresado a al nodo que se crea
- * @return       : retorna el Nodo con el data (number) ingresado como parametro
+ * @brief        :  realiza la creacion del archivo, el insertSort, el heapSort, el BinarySearch y los promedios los guarda dentro de variables globales
+ * @param numData  : la cantidad de numeros que se crearan en el archivo "data.txt"
+ * @param n  : el N es la cantidad de veces que se guardara un tiempo dentro del arreglo MAX 3
+ * @return       : no retorna nada
  */
 void mainFunction(int numData, int n);
 

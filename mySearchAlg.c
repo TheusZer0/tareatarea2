@@ -40,8 +40,6 @@ float timeBinarySearch(Nodo* head_ref){
         float tiempo;
         tiempo = (end.tv_sec - start.tv_sec) * 1000 + (end.tv_usec - start.tv_usec) / 1000.0;
         numbTotal[i-1]=tiempo;
-//        pNodo=binarySearch(head_ref,returnNodo(head_ref,num)->number,1,cantNodos);
-//        printf("la posicion del nodo en el la lista ordenada es: %d y el nodo contiene la data: %d \n",pNodo,returnNodo(head_ref,pNodo)->number);
     }
     for (int j = 0; j < 100 ; ++j) {
         pNodo = pNodo+numbTotal[j];
