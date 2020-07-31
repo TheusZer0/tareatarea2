@@ -9,6 +9,6 @@
 
 int binarySearch(Nodo* head_ref,int numero,int pInicio, int pFinal);
 
-void recuperarNumAleatorio(Nodo* head_ref);
+float timeBinarySearch(Nodo* head_ref);
 
 #endif //TAREATAREA2_MYSEARCHALG_H

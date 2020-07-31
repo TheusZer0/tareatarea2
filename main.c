@@ -103,7 +103,7 @@ void mainFunction(int numData, int n){
     Nodo* insertSort = NULL;
     Nodo* heapSort = NULL;
     generarArchivo(numData);
-    FILE* fileList=fopen("data.txt"/*argc[1]*/,"r");
+    FILE* fileList=fopen("data.txt","r");
     operacionesArchivo(fileList);
     insertSort=primero;
     heapSort=primero;
@@ -119,14 +119,10 @@ void mainFunction(int numData, int n){
     gettimeofday(&end, NULL);
     tiempoHeapSort = (end.tv_sec - start.tv_sec) * 1000 + (end.tv_usec - start.tv_usec) / 1000.0;
     printf("El tiempo que demoro el heapSort es: %f \n",tiempoHeapSort);
-    gettimeofday(&start, NULL);
-    recuperarNumAleatorio(insertSort);
-    gettimeofday(&end, NULL);
-    binarySearch = (end.tv_sec - start.tv_sec) * 1000 + (end.tv_usec - start.tv_usec) / 1000.0;
-    printf("El tiempo que demoro la busqueda binaria es: %f \n",binarySearch);
+    binarySearchArray[n]=timeBinarySearch(insertSort);
+    printf("El tiempo que demoro la busqueda binaria es: %f \n",binarySearchArray[n]);
     insertSortArray[n] = tiempoInsertSort;
     heapSortArray[n] = tiempoHeapSort;
-    binarySearchArray[n] = binarySearch;
     primero=eliminarLista(primero);
 }
 
