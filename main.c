@@ -71,9 +71,9 @@ int main(/*int argc, char *argv[]*/){
     float resultHeapSort = (heapSortArray[0]+heapSortArray[1]+heapSortArray[2])/3;
     float resultBinarySearch = (binarySearchArray[0]+binarySearchArray[1]+binarySearchArray[2])/3;
     printf("#############################\n");
-    printf("el promedio del insertSort con la cantidad de total de datos 150 es: %f \n",cantDatosUno,resultInsertSort);
-    printf("el promedio del heapSort con la cantidad de total de datos 150 es: %f \n",cantDatosUno,resultHeapSort);
-    printf("el promedio del binarySearch con la cantidad de total de datos 150 es: %f \n",cantDatosUno,resultBinarySearch);
+//    printf("el promedio del insertSort con la cantidad de total de datos 150 es: %f \n",cantDatosUno,resultInsertSort);
+//    printf("el promedio del heapSort con la cantidad de total de datos 150 es: %f \n",cantDatosUno,resultHeapSort);
+//    printf("el promedio del binarySearch con la cantidad de total de datos 150 es: %f \n",cantDatosUno,resultBinarySearch);
 
     cantDatosUno=1500;
     for (int i = 0; i <= 2 ; ++i) {
@@ -83,9 +83,9 @@ int main(/*int argc, char *argv[]*/){
     resultHeapSort = (heapSortArray[0]+heapSortArray[1]+heapSortArray[2])/3;
     resultBinarySearch = (binarySearchArray[0]+binarySearchArray[1]+binarySearchArray[2])/3;
     printf("#############################\n");
-    printf("el promedio del insertSort con la cantidad de total de datos (%d) es: %f \n",cantDatosUno,resultInsertSort);
-    printf("el promedio del heapSort con la cantidad de total de datos (%d) es: %f \n",cantDatosUno,resultHeapSort);
-    printf("el promedio del binarySearch con la cantidad de total de datos (%d) es: %f \n",cantDatosUno,resultBinarySearch);
+//    printf("el promedio del insertSort con la cantidad de total de datos (%d) es: %f \n",cantDatosUno,resultInsertSort);
+//    printf("el promedio del heapSort con la cantidad de total de datos (%d) es: %f \n",cantDatosUno,resultHeapSort);
+//    printf("el promedio del binarySearch con la cantidad de total de datos (%d) es: %f \n",cantDatosUno,resultBinarySearch);
 
     cantDatosUno=15000;
     for (int i = 0; i <= 2 ; ++i) {
@@ -95,10 +95,10 @@ int main(/*int argc, char *argv[]*/){
     resultHeapSort = (heapSortArray[0]+heapSortArray[1]+heapSortArray[2])/3;
     resultBinarySearch = (binarySearchArray[0]+binarySearchArray[1]+binarySearchArray[2])/3;
     printf("#############################\n");
-    printf("el promedio del insertSort con la cantidad de total de datos (%d) es: %f \n",cantDatosUno,resultInsertSort);
-    printf("el promedio del heapSort con la cantidad de total de datos (%d) es: %f \n",cantDatosUno,resultHeapSort);
-    printf("el promedio del binarySearch con la cantidad de total de datos (%d) es: %f \n",cantDatosUno,resultBinarySearch);
-    printf("\n");
+//    printf("el promedio del insertSort con la cantidad de total de datos (%d) es: %f \n",cantDatosUno,resultInsertSort);
+//    printf("el promedio del heapSort con la cantidad de total de datos (%d) es: %f \n",cantDatosUno,resultHeapSort);
+//    printf("el promedio del binarySearch con la cantidad de total de datos (%d) es: %f \n",cantDatosUno,resultBinarySearch);
+//    printf("\n");
 
     return 0;
 }
@@ -109,27 +109,31 @@ void mainFunction(int n,int x){
     //creacion de nodos que seran igualados al head (para asi no modificar el head principal, de manera que el head principal siempre estara en desorden)
     Nodo* insertSort = NULL;
     Nodo* heapSort = NULL;
+    Nodo* heapSortFinal=NULL;
+    Nodo* insertSortFinal=NULL;
     FILE* fileList=fopen("data.txt","r"); //abrir el archivo
     createList(fileList,x); //funcion que crea las listas enlazadas, siendo x la cantidad de datos que se leeran del archivo
     insertSort=primero;
     heapSort=primero;
+    //   printf(" %d ",countNodos(primero));
     gettimeofday(&start, NULL);
-    insertionSort(insertSort);
+    insertSortFinal=insertionSort(insertSort);
     gettimeofday(&end, NULL);
     float tiempoInsertSort,tiempoHeapSort,binarySearch;
     tiempoInsertSort = (end.tv_sec - start.tv_sec) * 1000 + (end.tv_usec - start.tv_usec) / 1000.0;
-    printf("#############################\n");
-    printf("El tiempo que demoro el insertSort es: %f \n",tiempoInsertSort);
+    //  printf("#############################\n");
+    //  printf("El tiempo que demoro el insertSort es: %f \n",tiempoInsertSort);
     gettimeofday(&start, NULL);
-    heapSort=heapsort(heapSort);
+    heapSortFinal=heapsort(heapSort);
+//    printf(" %d ",countNodos(heapSortFinal));
+    printList(heapSortFinal);
     gettimeofday(&end, NULL);
     tiempoHeapSort = (end.tv_sec - start.tv_sec) * 1000 + (end.tv_usec - start.tv_usec) / 1000.0;
-    printf("El tiempo que demoro el heapSort es: %f \n",tiempoHeapSort);
+    //printf("El tiempo que demoro el heapSort es: %f \n",tiempoHeapSort);
     binarySearchArray[n]=timeBinarySearch(insertSort);
-    printf("El tiempo que demoro la busqueda binaria es: %f \n",binarySearchArray[n]);
+    //printf("El tiempo que demoro la busqueda binaria es: %f \n",binarySearchArray[n]);
     insertSortArray[n] = tiempoInsertSort;
     heapSortArray[n] = tiempoHeapSort;
-    printf(" %d ",countNodos(primero));
     primero=eliminarLista(primero);
 }
 
