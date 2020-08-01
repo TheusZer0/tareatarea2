@@ -65,7 +65,7 @@ void mainFunction(int n,int x);
 
 int main(/*int argc, char *argv[]*/){
     generarArchivo(15000);
-    int cantDatosUno=150;
+    int cantDatosUno=187;
     for (int i = 0; i <= 2 ; ++i) {
         mainFunction(i,cantDatosUno);
     }
@@ -73,11 +73,11 @@ int main(/*int argc, char *argv[]*/){
     float resultHeapSort = (heapSortArray[0]+heapSortArray[1]+heapSortArray[2])/3;
     float resultBinarySearch = (binarySearchArray[0]+binarySearchArray[1]+binarySearchArray[2])/3;
     printf("#############################\n");
-    printf("el promedio del insertSort con la cantidad de total de datos (%d) es: %f \n",cantDatosUno,resultInsertSort);
-    printf("el promedio del heapSort con la cantidad de total de datos (%d) es: %f \n",cantDatosUno,resultHeapSort);
-    printf("el promedio del binarySearch con la cantidad de total de datos (%d) es: %f \n",cantDatosUno,resultBinarySearch);
+    printf("el promedio del insertSort con la cantidad de total de datos 150 es: %f \n",cantDatosUno,resultInsertSort);
+    printf("el promedio del heapSort con la cantidad de total de datos 150 es: %f \n",cantDatosUno,resultHeapSort);
+    printf("el promedio del binarySearch con la cantidad de total de datos 150 es: %f \n",cantDatosUno,resultBinarySearch);
 
-    cantDatosUno=1500;
+    cantDatosUno=1934;
     for (int i = 0; i <= 2 ; ++i) {
         mainFunction(i,cantDatosUno);
     }
@@ -89,7 +89,7 @@ int main(/*int argc, char *argv[]*/){
     printf("el promedio del heapSort con la cantidad de total de datos (%d) es: %f \n",cantDatosUno,resultHeapSort);
     printf("el promedio del binarySearch con la cantidad de total de datos (%d) es: %f \n",cantDatosUno,resultBinarySearch);
 
-    cantDatosUno=15000;
+    cantDatosUno=19414;
     for (int i = 0; i <= 2 ; ++i) {
         mainFunction(i,cantDatosUno);
     }
