@@ -1,8 +1,9 @@
-//
-// Created by theuszero on 18-07-20.
-//
-
-/*falta comentar el insertionSort en todas las librerias*/
+/*
+ * @file    : mySortAlg.c
+ * @author	: Robert Parra
+ * @date	: 01/08/2020
+ * @brief   : Tarea N2 estructura de datos y algoritmos
+ */
 
 #include <stdio.h>
 #include <stdlib.h>

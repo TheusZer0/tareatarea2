@@ -1,6 +1,10 @@
-//
-// Created by TheusZero on 7/27/2020.
-//
+/*
+ * @file    : mySearchAlg.c
+ * @author	: Robert Parra
+ * @date	: 01/08/2020
+ * @brief   : Tarea N2 estructura de datos y algoritmos
+ */
+
 #include <sys/time.h>
 #include <stdio.h>
 #include <stdlib.h>

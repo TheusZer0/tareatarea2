@@ -1,6 +1,9 @@
-//
-// Created by theuszero on 18-07-20.
-//
+/*
+ * @file    : mySortAlg.h
+ * @author	: Robert Parra
+ * @date	: 01/08/2020
+ * @brief   : Tarea N2 estructura de datos y algoritmos
+ */
 
 #ifndef TAREATAREA2_MYSORTALG_H
 #define TAREATAREA2_MYSORTALG_H
