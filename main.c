@@ -126,7 +126,6 @@ void mainFunction(int n,int x){
     gettimeofday(&start, NULL);
     heapSortFinal=heapsort(heapSort);
 //    printf(" %d ",countNodos(heapSortFinal));
-    printList(heapSortFinal);
     gettimeofday(&end, NULL);
     tiempoHeapSort = (end.tv_sec - start.tv_sec) * 1000 + (end.tv_usec - start.tv_usec) / 1000.0;
     //printf("El tiempo que demoro el heapSort es: %f \n",tiempoHeapSort);
