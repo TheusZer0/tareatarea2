@@ -18,8 +18,6 @@ float heapSortArray[3];
 //array que guarda los tiempos de 3 ejecuciones para una cantidad de datos X en el archivo con el algoritmo de binarySearch
 float binarySearchArray[3];
 
-static int cantidadNodos=0; //variable global estatica que contarta
-
 /**
  * @brief        : generar una base de datos con números enteros aleatorios con valores entre 0 y 1.000.000 y los escribe en un archivo "data.txt" separados cada numeros por una coma
  * @param        : no recibe parametros
@@ -194,7 +192,6 @@ Nodo * insertarNodo(int A){
         nuevo->previous=ultimo; //dejamos a previus como el nodo ultimo
         ultimo = nuevo; //igualamos el ultimo a nuevo
     }
-    cantidadNodos++; //sumamos la cantidad de nodos
     return nuevo; //retorna el nodo nuevo
 }
 
