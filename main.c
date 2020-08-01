@@ -30,7 +30,7 @@ void generarArchivo(int data);
  * @param FILE* fp: recibe un archivo, por defecto debe ser el "data.txt" ya que es este archivo el que tiene los numeros
  * @return       : no retorna nada
  */
-Nodo* operacionesArchivo(FILE* fp, int cantList); //recibe el archivo data.txt y opera sobre el
+void createList(FILE* archivo, int cantNum); //recibe el archivo data.txt y opera sobre el
 
 /**
  * @brief        : inserta nodos, los enlaza para crear la lista doblemente enlazada y cada nodo nuevo entra siendo un tail, es decir, cada nodo que se agrega se agrega al final
@@ -110,7 +110,7 @@ void mainFunction(int n,int x){
     Nodo* insertSort = NULL;
     Nodo* heapSort = NULL;
     FILE* fileList=fopen("data.txt","r"); //abrir el archivo
-    primero=operacionesArchivo(fileList,x); //funcion que crea las listas enlazadas, siendo x la cantidad de datos que se leeran del archivo
+    createList(fileList,x); //funcion que crea las listas enlazadas, siendo x la cantidad de datos que se leeran del archivo
     insertSort=primero;
     heapSort=primero;
     gettimeofday(&start, NULL);
@@ -145,7 +145,7 @@ void generarArchivo(int data){
             cont++;
             snprintf(buffer,50,"%d",num);
             //se escribe en un archivo
-            fprintf(fp,"%s,", buffer);
+            fprintf(fp,"%s\n", buffer);
         }
         if (cont==data){
             fclose(fp); //se cierra el archivo
@@ -154,29 +154,13 @@ void generarArchivo(int data){
     }
 }
 
-Nodo* operacionesArchivo(FILE* fp, int cantList){
-    Nodo* tmp = NULL;
-    char str[MAXCHAR];
-    int num;
-    int cont=0;
-    if(fp==NULL){ //si el archivo en NULL entonces entrega el mensaje
-        printf("no se encontro el archivo %s",fp);
+void createList(FILE* archivo, int cantNum){
+    int numero;
+    for(int i=0; i < cantNum; i++){
+        fscanf(archivo,"%d",&numero);
+        insertarNodo(numero);
     }
-    while(fgets(str,MAXCHAR,(FILE*)fp) !=NULL){
-        char *token;
-        token=strtok(str,",");
-        while(token != NULL){
-            if (cont < cantList){
-                num = atoi(token); //la funcion atoi convierte el char en entero
-                insertarNodo(num); //se inserta el num en la lista doblemente enlazada
-                token = strtok(NULL,",");
-                cont++;
-            }else{
-                tmp=primero;
-                return tmp;
-            }
-        }
-    }
+    rewind(archivo);
 }
 
 Nodo * insertarNodo(int A){
