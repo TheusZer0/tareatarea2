@@ -11,6 +11,7 @@
 #include <sys/time.h>
 #include "mySortAlg.h"
 #include "mySearchAlg.h"
+#define MAXCHAR 1000
 
 Nodo *primero=NULL; //se define un nodo global que representara el primer nodo de la lista (head)
 Nodo *ultimo=NULL; //se define un nodo global que representara el ultimo nodo de la lista (tail)
@@ -144,7 +145,6 @@ void mainFunction(int n,int x){
     insertSortArray[n] = tiempoInsertSort; //asignacion del tiempo en una variable global que corresponde a un arreglo
     heapSortArray[n] = tiempoHeapSort; //asignacion del tiempo en una variable global que corresponde a un arreglo
     primero=eliminarLista(primero); //elimina la lista
-    heapSortFinal=eliminarLista(heapSortFinal); //elimina la lista
 }
 
 void generarArchivo(int data){

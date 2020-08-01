@@ -2,7 +2,7 @@
  * @file    : mySortAlg.c
  * @author	: Robert Parra
  * @date	: 01/08/2020
- * @brief   : Tarea N2 estructura de datos y algoritmos
+ * @brief   : Tarea N2 Estructura de datos y algoritmos
  */
 
 #include <stdio.h>
