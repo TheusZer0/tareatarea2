@@ -61,18 +61,7 @@ Nodo* eliminarLista(Nodo* headRef);
  */
 void mainFunction(int n,int x);
 
-Nodo *copy(Nodo *org)
-{
-    Nodo *new=NULL,**tail = &new;
-
-    for( ;org; org = org->next) {
-        *tail = malloc (sizeof **tail );
-        (*tail)->number = org->number;
-        (*tail)->next = NULL;
-        tail = &(*tail)->next;
-    }
-    return new;
-}
+//Nodo *copy(Nodo *start1);
 
 int main(/*int argc, char *argv[]*/){
     generarArchivo(15000);
@@ -116,34 +105,51 @@ int main(/*int argc, char *argv[]*/){
     return 0;
 }
 
+/*Nodo *copy(Nodo *start1)
+{
+    if(start1==NULL) return 0;
+    Nodo *temp=(Nodo *) malloc(sizeof(Nodo));
+    temp->number=start1->number;
+    temp->next=copy(start1->next);
+    return temp;
+}*/
+
 void mainFunction(int n,int x){
+
     struct timeval start , end ; //struct para determinar el tiempo de la ejecucion de los algortimos usados dentro de la funcion
     //creacion de nodos que seran igualados al head (para asi no modificar el head principal, de manera que el head principal siempre estara en desorden)
     Nodo* insertSort = NULL;
-    Nodo* insertSortFinal=NULL;
+    Nodo* heapSortFinal=NULL;
     FILE* fileList=fopen("data.txt","r"); //abrir el archivo
+
+    //InsertSort
     createList(fileList,x); //funcion que crea las listas enlazadas, siendo x la cantidad de datos que se leeran del archivo
-    insertSortFinal=copy(primero);
     insertSort=primero;
-    //   printf(" %d ",countNodos(primero));
     gettimeofday(&start, NULL);
-    insertSort=insertionSort(insertSort);
+    insertSort=insertionSort(primero);
     gettimeofday(&end, NULL);
+    primero=eliminarLista(primero);
+    //termina el insertSort y se elimina la lista
+
+    //HeapSort
+    createList(fileList,x); //funcion que crea las listas enlazadas, siendo x la cantidad de datos que se leeran del archivo
+    heapSortFinal=primero;
     float tiempoInsertSort,tiempoHeapSort,binarySearch;
     tiempoInsertSort = (end.tv_sec - start.tv_sec) * 1000 + (end.tv_usec - start.tv_usec) / 1000.0;
-    //  printf("#############################\n");
-    //  printf("El tiempo que demoro el insertSort es: %f \n",tiempoInsertSort);
+    printf("#############################\n");
+    printf("El tiempo que demoro el insertSort es: %f \n",tiempoInsertSort);
     gettimeofday(&start, NULL);
-    insertSortFinal=heapsort(insertSortFinal);
-    printf(" %d ",countNodos(insertSortFinal));
+    heapSortFinal=heapsort(heapSortFinal);
     gettimeofday(&end, NULL);
     tiempoHeapSort = (end.tv_sec - start.tv_sec) * 1000 + (end.tv_usec - start.tv_usec) / 1000.0;
-    //printf("El tiempo que demoro el heapSort es: %f \n",tiempoHeapSort);
+    printf("El tiempo que demoro el heapSort es: %f \n",tiempoHeapSort);
     binarySearchArray[n]=timeBinarySearch(insertSort);
-    //printf("El tiempo que demoro la busqueda binaria es: %f \n",binarySearchArray[n]);
+    printf("El tiempo que demoro la busqueda binaria es: %f \n",binarySearchArray[n]);
     insertSortArray[n] = tiempoInsertSort;
     heapSortArray[n] = tiempoHeapSort;
     primero=eliminarLista(primero);
+    heapSortFinal=eliminarLista(heapSortFinal);
+
 }
 
 void generarArchivo(int data){
