@@ -159,13 +159,13 @@ void generarArchivo(int data){
 void operacionesArchivo(FILE* fp, int cantList){
     char str[MAXCHAR];
     int num;
+    int cont=0;
     if(fp==NULL){ //si el archivo en NULL entonces entrega el mensaje
         printf("no se encontro el archivo %s",fp);
     }
     while(fgets(str,MAXCHAR,(FILE*)fp) !=NULL){
         char *token;
         token=strtok(str,",");
-        int cont=0;
         while(token != NULL){
             if (cont == cantList){
                 break;
