@@ -30,7 +30,7 @@ void generarArchivo(int data);
  * @param FILE* fp: recibe un archivo, por defecto debe ser el "data.txt" ya que es este archivo el que tiene los numeros
  * @return       : no retorna nada
  */
-void operacionesArchivo(FILE* fp, int cantList); //recibe el archivo data.txt y opera sobre el
+Nodo* operacionesArchivo(FILE* fp, int cantList); //recibe el archivo data.txt y opera sobre el
 
 /**
  * @brief        : inserta nodos, los enlaza para crear la lista doblemente enlazada y cada nodo nuevo entra siendo un tail, es decir, cada nodo que se agrega se agrega al final
@@ -63,7 +63,7 @@ void mainFunction(int n,int x);
 
 int main(/*int argc, char *argv[]*/){
     generarArchivo(15000);
-    int cantDatosUno=237;
+    int cantDatosUno=150;
     for (int i = 0; i <= 2 ; ++i) {
         mainFunction(i,cantDatosUno);
     }
@@ -75,7 +75,7 @@ int main(/*int argc, char *argv[]*/){
     printf("el promedio del heapSort con la cantidad de total de datos 150 es: %f \n",cantDatosUno,resultHeapSort);
     printf("el promedio del binarySearch con la cantidad de total de datos 150 es: %f \n",cantDatosUno,resultBinarySearch);
 
-    cantDatosUno=1934;
+    cantDatosUno=1500;
     for (int i = 0; i <= 2 ; ++i) {
         mainFunction(i,cantDatosUno);
     }
@@ -87,7 +87,7 @@ int main(/*int argc, char *argv[]*/){
     printf("el promedio del heapSort con la cantidad de total de datos (%d) es: %f \n",cantDatosUno,resultHeapSort);
     printf("el promedio del binarySearch con la cantidad de total de datos (%d) es: %f \n",cantDatosUno,resultBinarySearch);
 
-    cantDatosUno=19414;
+    cantDatosUno=15000;
     for (int i = 0; i <= 2 ; ++i) {
         mainFunction(i,cantDatosUno);
     }
@@ -110,7 +110,7 @@ void mainFunction(int n,int x){
     Nodo* insertSort = NULL;
     Nodo* heapSort = NULL;
     FILE* fileList=fopen("data.txt","r"); //abrir el archivo
-    operacionesArchivo(fileList,x); //funcion que crea las listas enlazadas, siendo x la cantidad de datos que se leeran del archivo
+    primero=operacionesArchivo(fileList,x); //funcion que crea las listas enlazadas, siendo x la cantidad de datos que se leeran del archivo
     insertSort=primero;
     heapSort=primero;
     gettimeofday(&start, NULL);
@@ -154,7 +154,8 @@ void generarArchivo(int data){
     }
 }
 
-void operacionesArchivo(FILE* fp, int cantList){
+Nodo* operacionesArchivo(FILE* fp, int cantList){
+    Nodo* tmp = NULL;
     char str[MAXCHAR];
     int num;
     int cont=0;
@@ -165,13 +166,14 @@ void operacionesArchivo(FILE* fp, int cantList){
         char *token;
         token=strtok(str,",");
         while(token != NULL){
-            if (cont != cantList){
+            if (cont < cantList){
                 num = atoi(token); //la funcion atoi convierte el char en entero
                 insertarNodo(num); //se inserta el num en la lista doblemente enlazada
                 token = strtok(NULL,",");
                 cont++;
             }else{
-                return;
+                tmp=primero;
+                return tmp;
             }
         }
     }
