@@ -167,13 +167,13 @@ void operacionesArchivo(FILE* fp, int cantList){
         char *token;
         token=strtok(str,",");
         while(token != NULL){
-            if (cont == cantList){
-                break;
-            }else{
+            if (cont != cantList){
                 num = atoi(token); //la funcion atoi convierte el char en entero
                 insertarNodo(num); //se inserta el num en la lista doblemente enlazada
-                cont++;
                 token = strtok(NULL,",");
+                cont++;
+            }else{
+                return;
             }
         }
     }
