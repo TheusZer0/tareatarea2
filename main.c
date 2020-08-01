@@ -105,12 +105,13 @@ int main(/*int argc, char *argv[]*/){
 }
 
 void mainFunction(int n,int x){
-    primero=eliminarLista(primero);
-    struct timeval start , end ;
+    primero=eliminarLista(primero); //elimina cualquier tipo de lista enlazada en el sistema (vacia la lista principal, el head primero)
+    struct timeval start , end ; //struct para determinar el tiempo de la ejecucion de los algortimos usados dentro de la funcion
+    //creacion de nodos que seran igualados al head (para asi no modificar el head principal, de manera que el head principal siempre estara en desorden)
     Nodo* insertSort = NULL;
     Nodo* heapSort = NULL;
-    FILE* fileList=fopen("data.txt","r");
-    operacionesArchivo(fileList,x);
+    FILE* fileList=fopen("data.txt","r"); //abrir el archivo
+    operacionesArchivo(fileList,x); //funcion que crea las listas enlazadas, siendo x la cantidad de datos que se leeran del archivo
     insertSort=primero;
     heapSort=primero;
     gettimeofday(&start, NULL);

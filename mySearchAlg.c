@@ -34,6 +34,7 @@ float timeBinarySearch(Nodo* head_ref){
     float pNodo = 0;
     for (int i = 1; i <= 100 ; ++i) {
         num= rand() % cantNodos+1;
+        printf("%d,",num);
         gettimeofday(&start, NULL);
         binarySearch(head_ref,returnNodo(head_ref,num)->number,1,cantNodos);
         gettimeofday(&end, NULL);
