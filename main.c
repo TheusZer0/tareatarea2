@@ -77,7 +77,7 @@ int main(/*int argc, char *argv[]*/){
     printf("el promedio del heapSort con la cantidad de total de datos (%d) es: %f \n",cantDatosUno,resultHeapSort);
     printf("el promedio del binarySearch con la cantidad de total de datos (%d) es: %f \n",cantDatosUno,resultBinarySearch);
 
-    cantDatosUno=1500;
+    cantDatosUno=1507;
     for (int i = 0; i <= 2 ; ++i) {
         mainFunction(i,cantDatosUno);
     }
@@ -88,7 +88,7 @@ int main(/*int argc, char *argv[]*/){
     printf("el promedio del insertSort con la cantidad de total de datos (%d) es: %f \n",cantDatosUno,resultInsertSort);
     printf("el promedio del heapSort con la cantidad de total de datos (%d) es: %f \n",cantDatosUno,resultHeapSort);
     printf("el promedio del binarySearch con la cantidad de total de datos (%d) es: %f \n",cantDatosUno,resultBinarySearch);
-/*
+
     cantDatosUno=15000;
     for (int i = 0; i <= 2 ; ++i) {
         mainFunction(i,cantDatosUno);
@@ -101,7 +101,7 @@ int main(/*int argc, char *argv[]*/){
     printf("el promedio del heapSort con la cantidad de total de datos (%d) es: %f \n",cantDatosUno,resultHeapSort);
     printf("el promedio del binarySearch con la cantidad de total de datos (%d) es: %f \n",cantDatosUno,resultBinarySearch);
     printf("\n");
-*/
+
     return 0;
 }
 
@@ -131,6 +131,8 @@ void mainFunction(int n,int x){
     printf("El tiempo que demoro la busqueda binaria es: %f \n",binarySearchArray[n]);
     insertSortArray[n] = tiempoInsertSort;
     heapSortArray[n] = tiempoHeapSort;
+    printf(" %d ",countNodos(insertSort));
+    printList(insertSort);
     primero=eliminarLista(primero);
 }
 
