@@ -77,7 +77,7 @@ int main(/*int argc, char *argv[]*/){
     printf("el promedio del heapSort con la cantidad de total de datos (%d) es: %f \n",cantDatosUno,resultHeapSort);
     printf("el promedio del binarySearch con la cantidad de total de datos (%d) es: %f \n",cantDatosUno,resultBinarySearch);
 
-    cantDatosUno=1507;
+    cantDatosUno=1500;
     for (int i = 0; i <= 2 ; ++i) {
         mainFunction(i,cantDatosUno);
     }
@@ -106,7 +106,6 @@ int main(/*int argc, char *argv[]*/){
 }
 
 void mainFunction(int n,int x){
-    primero=eliminarLista(primero); //elimina cualquier tipo de lista enlazada en el sistema (vacia la lista principal, el head primero)
     struct timeval start , end ; //struct para determinar el tiempo de la ejecucion de los algortimos usados dentro de la funcion
     //creacion de nodos que seran igualados al head (para asi no modificar el head principal, de manera que el head principal siempre estara en desorden)
     Nodo* insertSort = NULL;
@@ -132,7 +131,6 @@ void mainFunction(int n,int x){
     insertSortArray[n] = tiempoInsertSort;
     heapSortArray[n] = tiempoHeapSort;
     printf(" %d ",countNodos(insertSort));
-    printList(insertSort);
     primero=eliminarLista(primero);
 }
 
@@ -160,7 +158,6 @@ void generarArchivo(int data){
 void operacionesArchivo(FILE* fp, int cantList){
     char str[MAXCHAR];
     int num;
-    int cont=0;
     if(fp==NULL){ //si el archivo en NULL entonces entrega el mensaje
         printf("no se encontro el archivo %s",fp);
     }
@@ -168,13 +165,14 @@ void operacionesArchivo(FILE* fp, int cantList){
         char *token;
         token=strtok(str,",");
         while(token != NULL){
+            int cont=0;
             if (cont == cantList){
                 break;
             }else{
                 num = atoi(token); //la funcion atoi convierte el char en entero
                 insertarNodo(num); //se inserta el num en la lista doblemente enlazada
+                cont++;
                 token = strtok(NULL,",");
-                cont=cont+1;
             }
         }
     }
