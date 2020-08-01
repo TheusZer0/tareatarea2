@@ -38,8 +38,6 @@ Nodo * sortedInsert(Nodo* head_ref, Nodo* newNode){ //recibe como parametro el n
 Nodo* insertionSort(Nodo* head_ref){
     Nodo* sorted = NULL;
     Nodo* current = head_ref;
-    /*Nodo* sorted= NULL
-    Nodo* current = head_ref;*/
     while (current!=NULL){
         Nodo* next = current->next;
         current->previous = current->next=NULL;

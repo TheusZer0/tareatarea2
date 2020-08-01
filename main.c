@@ -61,6 +61,19 @@ Nodo* eliminarLista(Nodo* headRef);
  */
 void mainFunction(int n,int x);
 
+Nodo *copy(Nodo *org)
+{
+    Nodo *new=NULL,**tail = &new;
+
+    for( ;org; org = org->next) {
+        *tail = malloc (sizeof **tail );
+        (*tail)->number = org->number;
+        (*tail)->next = NULL;
+        tail = &(*tail)->next;
+    }
+    return new;
+}
+
 int main(/*int argc, char *argv[]*/){
     generarArchivo(15000);
     int cantDatosUno=150;
@@ -104,29 +117,25 @@ int main(/*int argc, char *argv[]*/){
 }
 
 void mainFunction(int n,int x){
-    primero=eliminarLista(primero);
     struct timeval start , end ; //struct para determinar el tiempo de la ejecucion de los algortimos usados dentro de la funcion
     //creacion de nodos que seran igualados al head (para asi no modificar el head principal, de manera que el head principal siempre estara en desorden)
     Nodo* insertSort = NULL;
-    Nodo* heapSort = NULL;
-    Nodo* heapSortFinal=NULL;
     Nodo* insertSortFinal=NULL;
     FILE* fileList=fopen("data.txt","r"); //abrir el archivo
     createList(fileList,x); //funcion que crea las listas enlazadas, siendo x la cantidad de datos que se leeran del archivo
+    insertSortFinal=copy(primero);
     insertSort=primero;
-    heapSort=primero;
     //   printf(" %d ",countNodos(primero));
     gettimeofday(&start, NULL);
-    insertSortFinal=insertionSort(insertSort);
+    insertSort=insertionSort(insertSort);
     gettimeofday(&end, NULL);
-    printf("%d",countNodos(insertSortFinal));
     float tiempoInsertSort,tiempoHeapSort,binarySearch;
     tiempoInsertSort = (end.tv_sec - start.tv_sec) * 1000 + (end.tv_usec - start.tv_usec) / 1000.0;
     //  printf("#############################\n");
     //  printf("El tiempo que demoro el insertSort es: %f \n",tiempoInsertSort);
     gettimeofday(&start, NULL);
-    heapSortFinal=heapsort(heapSort);
-//    printf(" %d ",countNodos(heapSortFinal));
+    insertSortFinal=heapsort(insertSortFinal);
+    printf(" %d ",countNodos(insertSortFinal));
     gettimeofday(&end, NULL);
     tiempoHeapSort = (end.tv_sec - start.tv_sec) * 1000 + (end.tv_usec - start.tv_usec) / 1000.0;
     //printf("El tiempo que demoro el heapSort es: %f \n",tiempoHeapSort);
