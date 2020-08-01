@@ -165,8 +165,8 @@ void operacionesArchivo(FILE* fp, int cantList){
     while(fgets(str,MAXCHAR,(FILE*)fp) !=NULL){
         char *token;
         token=strtok(str,",");
+        int cont=0;
         while(token != NULL){
-            int cont=0;
             if (cont == cantList){
                 break;
             }else{
