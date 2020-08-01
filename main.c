@@ -63,7 +63,7 @@ void mainFunction(int n,int x);
 
 int main(/*int argc, char *argv[]*/){
     generarArchivo(15000);
-    int cantDatosUno=187;
+    int cantDatosUno=237;
     for (int i = 0; i <= 2 ; ++i) {
         mainFunction(i,cantDatosUno);
     }
@@ -129,7 +129,7 @@ void mainFunction(int n,int x){
     printf("El tiempo que demoro la busqueda binaria es: %f \n",binarySearchArray[n]);
     insertSortArray[n] = tiempoInsertSort;
     heapSortArray[n] = tiempoHeapSort;
-    printf(" %d ",countNodos(insertSort));
+    printf(" %d ",countNodos(primero));
     primero=eliminarLista(primero);
 }
 
