@@ -89,91 +89,91 @@ int parent(int pNodo){
     return nodoPadre;
 }
 
-void swap(Nodo** headRef,Nodo* nodo1, Nodo* nodo2) {
+void swap(Nodo** headRef,Nodo* numNode_One, Nodo* numNode_Two) {
     /*
      * en el codigo original cuando intercambias head con b, b se conviertia en una nueva head.  por lo que ocurria ese error y fue arreglado
      * otro error era que cuando intercambias a con ultimo nodo, a se convierte en un nuevo ultimo nodo, tambien fue arreglado
-     * */
-    if(nodo1!=*headRef && nodo2!=*headRef){
-        if (nodo1 == nodo2)
+     */
+    if(numNode_One!=*headRef && numNode_Two != *headRef){
+        if (numNode_One == numNode_Two)
             return;
 
-        if (nodo1->next == nodo2) { // right next to each other
-            nodo1->next = nodo2->next;
-            nodo2->previous = nodo1->previous;
+        if (numNode_One->next == numNode_Two) { // right next to each other
+            numNode_One->next = numNode_Two->next;
+            numNode_Two->previous = numNode_One->previous;
 
-            if (nodo1->next != NULL)
-                nodo1->next->previous = nodo1;
+            if (numNode_One->next != NULL)
+                numNode_One->next->previous = numNode_One;
 
-            if (nodo2->previous != NULL)
-                nodo2->previous->next = nodo2;
+            if (numNode_Two->previous != NULL)
+                numNode_Two->previous->next = numNode_Two;
 
 
-            nodo2->next = nodo1;
-            nodo1->previous = nodo2;
+            numNode_Two->next = numNode_One;
+            numNode_One->previous = numNode_Two;
         } else {
-            Nodo* prev = nodo2->previous;
-            Nodo* n = nodo2->next;
+            Nodo* prev = numNode_Two->previous;
+            Nodo* n = numNode_Two->next;
 
-            nodo2->previous = nodo1->previous;
-            nodo2->next = nodo1->next;
+            numNode_Two->previous = numNode_One->previous;
+            numNode_Two->next = numNode_One->next;
 
-            nodo1->previous = prev;
-            nodo1->next = n;
+            numNode_One->previous = prev;
+            numNode_One->next = n;
 
-            if (nodo2->next != NULL)
-                nodo2->next->previous = nodo2;
-            if (nodo2->previous != NULL)
-                nodo2->previous->next = nodo2;
+            if (numNode_Two->next != NULL)
+                numNode_Two->next->previous = numNode_Two;
+            if (numNode_Two->previous != NULL)
+                numNode_Two->previous->next = numNode_Two;
 
-            if (nodo1->next != NULL)
-                nodo1->next->previous = nodo1;
-            if (nodo1->previous != NULL)
-                nodo1->previous->next = nodo1;
+            if (numNode_One->next != NULL)
+                numNode_One->next->previous = numNode_One;
+            if (numNode_One->previous != NULL)
+                numNode_One->previous->next = numNode_One;
         }
     }
     else{
-        if (nodo1 == nodo2)
+        if (numNode_One == numNode_Two)
             return;
 
-        if (nodo1->next == nodo2) { // right next to each other
-            nodo1->next = nodo2->next;
-            nodo2->previous = nodo1->previous;
+        if (numNode_One->next == numNode_Two) { // right next to each other
+            numNode_One->next = numNode_Two->next;
+            numNode_Two->previous = numNode_One->previous;
 
-            if (nodo1->next != NULL)
-                nodo1->next->previous = nodo1;
+            if (numNode_One->next != NULL)
+                numNode_One->next->previous = numNode_One;
 
-            if (nodo2->previous != NULL)
-                nodo2->previous->next = nodo2;
+            if (numNode_Two->previous != NULL)
+                numNode_Two->previous->next = numNode_Two;
 
 
-            nodo2->next = nodo1;
-            nodo1->previous = nodo2;
+            numNode_Two->next = numNode_One;
+            numNode_One->previous = numNode_Two;
         } else {
-            Nodo* prev = nodo2->previous;
-            Nodo* n = nodo2->next;
+            Nodo* prev = numNode_Two->previous;
+            Nodo* n = numNode_Two->next;
 
-            nodo2->previous = nodo1->previous;
-            nodo2->next = nodo1->next;
+            numNode_Two->previous = numNode_One->previous;
+            numNode_Two->next = numNode_One->next;
 
-            nodo1->previous = prev;
-            nodo1->next = n;
+            numNode_One->previous = prev;
+            numNode_One->next = n;
 
-            if (nodo2->next != NULL)
-                nodo2->next->previous = nodo2;
-            if (nodo2->previous != NULL)
-                nodo2->previous->next = nodo2;
+            if (numNode_Two->next != NULL)
+                numNode_Two->next->previous = numNode_Two;
+            if (numNode_Two->previous != NULL)
+                numNode_Two->previous->next = numNode_Two;
 
-            if (nodo1->next != NULL)
-                nodo1->next->previous = nodo1;
-            if (nodo1->previous != NULL)
-                nodo1->previous->next = nodo1;
+            if (numNode_One->next != NULL)
+                numNode_One->next->previous = numNode_One;
+            if (numNode_One->previous != NULL)
+                numNode_One->previous->next = numNode_One;
         }
-        if(nodo1->previous == NULL){
-            *headRef = nodo1;
+        if(numNode_One->previous == NULL){
+            *headRef = numNode_One;
         }
         else{
-            *headRef = nodo2;
+            *headRef = numNode_Two;
         }
     }
 }
