@@ -10,7 +10,6 @@
 #include <string.h>
 #include "mySortAlg.h"
 
-// insertionSort
 Nodo * sortedInsert(Nodo* head_ref, Nodo* newNode){ //recibe como parametro el nodo head_ref que es el head de la lista y el newNode para el insertSort
     Nodo* current; //se crea un nodo current, correspondiente a un nodo tmp
     if (head_ref==NULL){ //si el head es null
@@ -22,9 +21,9 @@ Nodo * sortedInsert(Nodo* head_ref, Nodo* newNode){ //recibe como parametro el n
         head_ref=newNode;
     } else {
         current = head_ref; //el nodo current apunta al head_ref
-        //localiza el nodo despues de
+        //localiza el nodo
         while ((current->next != NULL) && (((current->next)->number) < newNode->number)){
-            current= current->next;
+            current= current->next; //avanza al next
         }
         (newNode->next)=(current->next);
         if (current->next != NULL){
@@ -65,32 +64,36 @@ int posicionNodo(Nodo* Lista, Nodo* pNodo){
     int posicion=1;
     indice=Lista;
     while (indice !=NULL){ //recorre la lista
-        if(indice->number == pNodo->number){
-            return posicion;
+        if(indice->number == pNodo->number){ //si el numero es igual al numero que estamos buscando (encontramos el numero)
+            return posicion; //se retorna la posicion
         } else{
-            posicion++;
-            indice=indice->next; //ind
+            posicion++; //si no, se suma 1 en la posicion
+            indice=indice->next; //se avanza en la lista doblemente enlazada
         }
     }
 }
 
 int leftChild(int pNodo){
-    int tmp = 2*pNodo;
+    int tmp = 2*pNodo; //sacado de las ppt de clases
     return tmp;
 }
 
 int rightChild(int pNodo){
-    int tmp = ((2*pNodo)+1);
+    int tmp = ((2*pNodo)+1); //sacado de las ppt de clases
     return tmp;
 }
 
 int parent(int pNodo){
     int nodoPadre=0;
-    nodoPadre=(pNodo/2);
+    nodoPadre=(pNodo/2); //sacado de las ppt de clases
     return nodoPadre;
 }
 
-void swamp(Nodo** headRef,Nodo* nodo1, Nodo* nodo2) {
+void swap(Nodo** headRef,Nodo* nodo1, Nodo* nodo2) {
+    /*
+     * en el codigo original cuando intercambias head con b, b se conviertia en una nueva head.  por lo que ocurria ese error y fue arreglado
+     * otro error era que cuando intercambias a con ultimo nodo, a se convierte en un nuevo ultimo nodo, tambien fue arreglado
+     * */
     if(nodo1!=*headRef && nodo2!=*headRef){
         if (nodo1 == nodo2)
             return;
@@ -207,7 +210,7 @@ void maxHeapify(Nodo** head, int posicion, int heapzise){
         largest=r;
     }
     if (largest!=posicion){
-        swamp(head,returnNodo(*head, posicion), ((returnNodo(*head, largest))));
+        swap(head,returnNodo(*head, posicion), ((returnNodo(*head, largest))));
         maxHeapify(head, largest,heapzise);
     }
 }
@@ -226,7 +229,7 @@ Nodo* heapsort(Nodo* head_ref){
     tmp=buildMaxHeap(tmp);
     int heapzise = countNodos(tmp);
     for (int i = countNodos(tmp); i>=2 ; i--) {
-        swamp(&tmp,returnNodo(tmp,1),returnNodo(tmp,i));
+        swap(&tmp,returnNodo(tmp,1),returnNodo(tmp,i));
         heapzise--;
         maxHeapify(&tmp,1,heapzise);
     }

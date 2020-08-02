@@ -5,7 +5,6 @@
  * @brief   : Tarea N2 estructura de datos y algoritmos
  */
 
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <sys/time.h>
@@ -140,7 +139,9 @@ void mainFunction(int n,int x){
     gettimeofday(&end, NULL); //tiempo de la ejecucion del programa
     tiempoHeapSort = (end.tv_sec - start.tv_sec) * 1000 + (end.tv_usec - start.tv_usec) / 1000.0;
     printf("El tiempo que demoro el heapSort es: %f \n",tiempoHeapSort);
-    binarySearchArray[n]=timeBinarySearch(insertSort); //asignacion del tiempo en una variable global que corresponde a un arreglo
+
+    //BinarySearch
+    binarySearchArray[n]=timeBinarySearch(heapSortFinal); //asignacion del tiempo en una variable global que corresponde a un arreglo
     printf("El tiempo que demoro la busqueda binaria es: %f \n",binarySearchArray[n]);
     insertSortArray[n] = tiempoInsertSort; //asignacion del tiempo en una variable global que corresponde a un arreglo
     heapSortArray[n] = tiempoHeapSort; //asignacion del tiempo en una variable global que corresponde a un arreglo

@@ -19,11 +19,11 @@ typedef struct nd {
  * Links usados:
  * https://www.geeksforgeeks.org/create-doubly-linked-list-using-double-pointer-inserting-nodes-list-remains-ascending-order/ //InsertionSort
  * https://www.geeksforgeeks.org/insertion-sort-doubly-linked-list/ //InsertionSort
- *
+ * https://gist.github.com/badboy/2630183 //swap de nodos
  */
 
 /**
- * @brief        : realiza un sorted a
+ * @brief        : realiza un sorted y un swap simple
  * @param head_ref: recibe el nodo head_ref, que correspondera al primer nodo de las listas enlazadas.
  * @param newNode: newNode corresponde a un nodo que puede apuntar a un nodo vacio o a uno especifico de la lista enlazada.
  * @return       : retorna un Nodo.
@@ -31,9 +31,9 @@ typedef struct nd {
 Nodo* sortedInsert(Nodo* head_ref, Nodo* newNode);
 
 /**
- * @brief        :
- * @param headRef:
- * @return       :
+ * @brief        : ejecuta el algoritmo de ordenamiento de tipo insertSort sobre la lista
+ * @param head_ref: corresponde a la lista doblemente enlazada sobre la que se hara el ordenamiento
+ * @return       : retorna la lista enlazada ordenada
  */
 Nodo* insertionSort(Nodo* head_ref);
 
@@ -77,6 +77,7 @@ int parent(int pNodo);
  * @brief        : mantiene la propiedad base de un max-heap
  * @param head   : recibe el nodo head de la lista, es decir, el primer nodo
  * @param posicion: recibe un entero que corresponde a la posicion del indice del nodo dentro de la lista enlazada, sera en este donde se haran los swap para mantener la propiedad base de un max-heap
+ * @param heapzise: el largo del heap, cant de datos o nodos (que luego se van restando o sacando)
  * @return       : no retorna nada
  */
 void maxHeapify(Nodo** head, int posicion, int heapzise);
@@ -104,6 +105,11 @@ void swap(Nodo** headRef,Nodo* nodo1, Nodo* nodo2);
  */
 Nodo* buildMaxHeap(Nodo* head);
 
+/**
+ * @brief      : ejecuta el algortimo de ordenamiento heapSort sobre la lista doblemente enlazada
+ * @param head_ref : recibe el nodo head de la lista doblemente enlazada
+ * @return     : retorna el nodo ordenado por el metodo heapSort
+ */
 Nodo* heapsort(Nodo* head_ref);
 
 #endif //TAREATAREA2_MYSORTALG_H
