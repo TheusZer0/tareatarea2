@@ -92,11 +92,12 @@ Nodo* rNodo(Nodo* head, int pNodo);
 
 /**
  * @brief        : realiza un swap entre nodos, es decir, cambia la posicion de 2 nodos.
+ * @param headRef: corresponde a la lista enlazada
  * @param one: Nodo a que sera intercambiado con un nodo b, es decir, seran intercambiados de posicion en la lista enlazada
  * @param two: Nodo b que sera intercambiado con un nodo a, es decir, seran intercambiados de posicion en la lista enlazada
  * @return       : no retorna ningun nodo
  */
-void swap(Nodo** headRef,Nodo* nodo1, Nodo* numNode_Two);
+void swap(Nodo** headRef,Nodo* numNode_One, Nodo* numNode_Two);
 
 /**
  * @brief      : funcion que realiza un max_heap, es decir, convierte la lista en un max-heap
