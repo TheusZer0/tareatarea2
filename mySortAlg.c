@@ -35,7 +35,7 @@ Nodo * sortedInsert(Nodo* head_ref, Nodo* newNode){ //recibe como parametro el n
     return head_ref;//retorna el sorted
 }
 
-Nodo* insertionSort(Nodo* head_ref){
+Nodo* insertSort(Nodo* head_ref){
     Nodo* sorted = NULL; //Nodo nulo
     Nodo* current = head_ref; //nodo current apunta al nodo head de la lista
     while (current!=NULL){ //mientras current no sea null, es decir, recorre el current
@@ -230,7 +230,7 @@ Nodo* buildMaxHeap(Nodo* headRef){
     return headRef;
 }
 
-Nodo* heapsort(Nodo* head_ref){
+Nodo* heapSort(Nodo* head_ref){
     Nodo* tmp = head_ref;
     tmp=buildMaxHeap(tmp);
     int heapzise = countNodos(tmp);

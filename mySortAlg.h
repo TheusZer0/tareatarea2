@@ -35,7 +35,7 @@ Nodo* sortedInsert(Nodo* head_ref, Nodo* newNode);
  * @param head_ref: corresponde a la lista doblemente enlazada sobre la que se hara el ordenamiento
  * @return       : retorna la lista enlazada ordenada
  */
-Nodo* insertionSort(Nodo* head_ref);
+Nodo* insertSort(Nodo* head_ref);
 
 /**
  * @brief        : entrega un entero que corresponde a la posicion del nodo dentro de la lista
@@ -111,6 +111,6 @@ Nodo* buildMaxHeap(Nodo* head);
  * @param head_ref : recibe el nodo head de la lista doblemente enlazada
  * @return     : retorna el nodo ordenado por el metodo heapSort
  */
-Nodo* heapsort(Nodo* head_ref);
+Nodo* heapSort(Nodo* head_ref);
 
 #endif //TAREATAREA2_MYSORTALG_H

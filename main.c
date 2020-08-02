@@ -114,16 +114,16 @@ void mainFunction(int n,int x){
 
     struct timeval start , end ; //struct para determinar el tiempo de la ejecucion de los algortimos usados dentro de la funcion
     //creacion de nodos que seran igualados al head (para asi no modificar el head principal, de manera que el head principal siempre estara en desorden)
-    Nodo* insertSort = NULL;
+    Nodo* insertionSort = NULL;
     Nodo* heapSortFinal=NULL;
     FILE* fileList=fopen("data.txt","r"); //abrir el archivo
     float tiempoInsertSort,tiempoHeapSort; //variables para el tiempo de ejecucion
 
     //InsertSort
     createList(fileList,x); //funcion que crea las listas enlazadas, siendo x la cantidad de datos que se leeran del archivo
-    insertSort=primero;
+    insertionSort=primero;
     gettimeofday(&start, NULL); //tiempo de la ejecucion del programa
-    insertSort=insertionSort(primero); //insertSort es una variable que tiene la lista ordenada por insertSort
+    insertionSort= insertSort(primero); //insertSort es una variable que tiene la lista ordenada por insertSort
     gettimeofday(&end, NULL); //tiempo de la ejecucion del programa
     primero=eliminarLista(primero); //se elimina la lista
     //termina el insertSort y se elimina la lista
@@ -135,7 +135,7 @@ void mainFunction(int n,int x){
     printf("#############################\n");
     printf("El tiempo que demoro el insertSort es: %f \n",tiempoInsertSort);
     gettimeofday(&start, NULL);//tiempo de la ejecucion del programa
-    heapSortFinal=heapsort(heapSortFinal); // heapsort
+    heapSortFinal= heapSort(heapSortFinal); // heapSort
     gettimeofday(&end, NULL); //tiempo de la ejecucion del programa
     tiempoHeapSort = (end.tv_sec - start.tv_sec) * 1000 + (end.tv_usec - start.tv_usec) / 1000.0;
     printf("El tiempo que demoro el heapSort es: %f \n",tiempoHeapSort);
