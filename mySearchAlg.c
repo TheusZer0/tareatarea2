@@ -21,7 +21,7 @@ int binarySearch(Nodo* head_ref,int numero,int pInicio, int pFinal){
         return pInicio;
     } else{
         pMedio= (pInicio+pFinal)/2;
-        nMedio = returnNodo(head_ref,pMedio);
+        nMedio = rNodo(head_ref, pMedio);
         if (numero <= nMedio->number){
             binarySearch(tmp,numero,pInicio,pMedio);
         } else {
@@ -39,7 +39,7 @@ float timeBinarySearch(Nodo* head_ref){
     for (int i = 1; i <= 100 ; ++i) {
         num= rand() % cantNodos+1;
         gettimeofday(&start, NULL);
-        binarySearch(head_ref,returnNodo(head_ref,num)->number,1,cantNodos);
+        binarySearch(head_ref, rNodo(head_ref, num)->number, 1, cantNodos);
         gettimeofday(&end, NULL);
         float tiempo;
         tiempo = (end.tv_sec - start.tv_sec) * 1000 + (end.tv_usec - start.tv_usec) / 1000.0;

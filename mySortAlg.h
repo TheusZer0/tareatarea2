@@ -88,7 +88,7 @@ void maxHeapify(Nodo** head, int posicion, int heapzise);
  * @param pNodo: recibe un entero que corresponde a la posicion del nodo que se quiere retornar
  * @return       : retorna el nodo que se esta buscando, en base a su posicion dentro de la lista
  */
-Nodo* returnNodo(Nodo* head, int pNodo);
+Nodo* rNodo(Nodo* head, int pNodo);
 
 /**
  * @brief        : realiza un swap entre nodos, es decir, cambia la posicion de 2 nodos.
