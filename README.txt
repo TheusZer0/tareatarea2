@@ -183,6 +183,6 @@ int binarySearch(Nodo* head_ref,int numero,int pInicio, int pFinal){
     }
 }
 
-el 
+si hacemos una busqueda lineal correspondera a O(n) en el peor caso, usando la estrategia divide y conquistaras, para dividir repetidamente el arreglo o listas doblemente enlazadas usaremos el Log(n) como peor caso, ya que generamos una division del mismo arreglo o lista.
 
 ```
