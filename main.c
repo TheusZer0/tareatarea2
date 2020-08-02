@@ -78,9 +78,9 @@ int main(/*int argc, char *argv[]*/){
     float resultHeapSort = (heapSortArray[0]+heapSortArray[1]+heapSortArray[2])/3; //se resuelve para calcular el promedio
     float resultBinarySearch = (binarySearchArray[0]+binarySearchArray[1]+binarySearchArray[2])/3; //se resuelve para calcular el promedio
     printf("#############################\n");
-    printf("el promedio del insertSort con la cantidad de total de datos 150 es: %f \n",cantDatosUno,resultInsertSort);
-    printf("el promedio del heapSort con la cantidad de total de datos 150 es: %f \n",cantDatosUno,resultHeapSort);
-    printf("el promedio del binarySearch con la cantidad de total de datos 150 es: %f \n",cantDatosUno,resultBinarySearch);
+    printf("el promedio del insertSort con la cantidad de total de datos 150 es: %f [ms] \n",cantDatosUno,resultInsertSort);
+    printf("el promedio del heapSort con la cantidad de total de datos 150 es: %f [ms] \n",cantDatosUno,resultHeapSort);
+    printf("el promedio del binarySearch con la cantidad de total de datos 150 es: %f [ms] \n",cantDatosUno,resultBinarySearch);
 
     cantDatosUno=1500; //cantidad de nodos con los que se hara la lista enlazada
     for (int i = 0; i <= 2 ; ++i) {
@@ -90,9 +90,9 @@ int main(/*int argc, char *argv[]*/){
     resultHeapSort = (heapSortArray[0]+heapSortArray[1]+heapSortArray[2])/3; //se resuelve para calcular el promedio
     resultBinarySearch = (binarySearchArray[0]+binarySearchArray[1]+binarySearchArray[2])/3; //se resuelve para calcular el promedio
     printf("#############################\n");
-    printf("el promedio del insertSort con la cantidad de total de datos (%d) es: %f \n",cantDatosUno,resultInsertSort);
-    printf("el promedio del heapSort con la cantidad de total de datos (%d) es: %f \n",cantDatosUno,resultHeapSort);
-    printf("el promedio del binarySearch con la cantidad de total de datos (%d) es: %f \n",cantDatosUno,resultBinarySearch);
+    printf("el promedio del insertSort con la cantidad de total de datos (%d) es: %f [ms] \n",cantDatosUno,resultInsertSort);
+    printf("el promedio del heapSort con la cantidad de total de datos (%d) es: %f [ms] \n",cantDatosUno,resultHeapSort);
+    printf("el promedio del binarySearch con la cantidad de total de datos (%d) es: %f [ms] \n",cantDatosUno,resultBinarySearch);
 
     cantDatosUno=15000; //cantidad de nodos con los que se hara la lista enlazada
     for (int i = 0; i <= 2 ; ++i) {
@@ -102,9 +102,9 @@ int main(/*int argc, char *argv[]*/){
     resultHeapSort = (heapSortArray[0]+heapSortArray[1]+heapSortArray[2])/3; //se resuelve para calcular el promedio
     resultBinarySearch = (binarySearchArray[0]+binarySearchArray[1]+binarySearchArray[2])/3; //se resuelve para calcular el promedio
     printf("#############################\n");
-    printf("el promedio del insertSort con la cantidad de total de datos (%d) es: %f \n",cantDatosUno,resultInsertSort);
-    printf("el promedio del heapSort con la cantidad de total de datos (%d) es: %f \n",cantDatosUno,resultHeapSort);
-    printf("el promedio del binarySearch con la cantidad de total de datos (%d) es: %f \n",cantDatosUno,resultBinarySearch);
+    printf("el promedio del insertSort con la cantidad de total de datos (%d) es: %f [ms] \n",cantDatosUno,resultInsertSort);
+    printf("el promedio del heapSort con la cantidad de total de datos (%d) es: %f [ms] \n",cantDatosUno,resultHeapSort);
+    printf("el promedio del binarySearch con la cantidad de total de datos (%d) es: %f [ms] \n",cantDatosUno,resultBinarySearch);
     printf("\n");
 
     return 0;
@@ -133,16 +133,16 @@ void mainFunction(int n,int x){
     heapSortFinal=primero;
     tiempoInsertSort = (end.tv_sec - start.tv_sec) * 1000 + (end.tv_usec - start.tv_usec) / 1000.0; //tiempo InsertSort
     printf("#############################\n");
-    printf("El tiempo que demoro el insertSort es: %f \n",tiempoInsertSort);
+    printf("El tiempo que demoro el insertSort es: %f [ms] \n",tiempoInsertSort);
     gettimeofday(&start, NULL);//tiempo de la ejecucion del programa
     heapSortFinal= heapSort(heapSortFinal); // heapSort
     gettimeofday(&end, NULL); //tiempo de la ejecucion del programa
     tiempoHeapSort = (end.tv_sec - start.tv_sec) * 1000 + (end.tv_usec - start.tv_usec) / 1000.0;
-    printf("El tiempo que demoro el heapSort es: %f \n",tiempoHeapSort);
+    printf("El tiempo que demoro el heapSort es: %f [ms] \n",tiempoHeapSort);
 
     //BinarySearch
     binarySearchArray[n]=timeBinarySearch(heapSortFinal); //asignacion del tiempo en una variable global que corresponde a un arreglo
-    printf("El tiempo que demoro la busqueda binaria es: %f \n",binarySearchArray[n]);
+    printf("El tiempo que demoro la busqueda binaria es: %f [ms] \n",binarySearchArray[n]);
     insertSortArray[n] = tiempoInsertSort; //asignacion del tiempo en una variable global que corresponde a un arreglo
     heapSortArray[n] = tiempoHeapSort; //asignacion del tiempo en una variable global que corresponde a un arreglo
     primero=eliminarLista(primero); //elimina la lista
